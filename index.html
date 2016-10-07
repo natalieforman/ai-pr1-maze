@@ -66,7 +66,7 @@ http://www.javascripture.com/FileReader
         };
         reader.readAsBinaryString(file);
       }*/
-      var start, finish, width;
+      var start, finish, gridwidth;
       var openFile = function(event) {
       var input = event.target;
       var reader = new FileReader();
@@ -84,18 +84,26 @@ http://www.javascripture.com/FileReader
         start = startLocation + 1; //this is the start coordinates
         finish = finishLocation + 1;  //this is the end coordinates
         width = new_text[1];
-        printGrid();
+        var indexes = []; //this will store all of the indexes in the array that is of the ' tile'
+        for(var i = 0; i < new_text.length; i++){
+            if (new_text[i] === " tile"){
+                indexes.push(i+1); //we know that for ever instance of the tile we know that the coordinates of that tile is index[i]+1;
+              }
+            }
+        console.table(indexes);
         document.getElementById('read_text').innerHTML = new_text;
         document.getElementById('array').innerHTML = new_text[5]; //printing a specific value in the array
       };
       reader.readAsText(input.files[0]);
+      printGrid();
     };
     var printGrid = function(){
       console.log(width);
       var size = width.split(",");
-      var gridWidth = size[1]; //this is the width of the grid
-      console.log(gridWidth);
-    }
+      gridwidth = size[1]; //this is the width of the grid
+      console.log(gridWidth); //now we know the width of the grid and assuming that it will always be a square we know that the height is also the same as the width
+}
+    /*from the output we know the tiles and the adj */
     </script>
     </body>
 </html>
