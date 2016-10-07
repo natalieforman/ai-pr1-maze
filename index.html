@@ -34,6 +34,8 @@
             <button onclick="readFile()">Print File</button>
             <div id="byte_content"></div>
             <div id="read_text"></div>
+            <div id="array"></div>
+            <div id="print_array"></div>
           </div>
         </div>
          <!--Creating the game space here -->
@@ -44,7 +46,9 @@
       </div>
 
     <!--https://www.html5rocks.com/en/tutorials/file/dndfiles/
-  https://developer.mozilla.org/en-US/docs/Web/API/FileReader -->
+  https://developer.mozilla.org/en-US/docs/Web/API/FileReader
+http://www.javascripture.com/FileReader
+-->
     <script>
     /*  function readFile() {
         var files = document.getElementById('files').files;
@@ -62,21 +66,36 @@
         };
         reader.readAsBinaryString(file);
       }*/
+      var start, finish, width;
       var openFile = function(event) {
       var input = event.target;
       var reader = new FileReader();
       reader.onload = function(){
         var text = reader.result;
-        var output = reader.result.substring(0, 200); //gets the first 200 characters
-        console.log(text);
-        //document.getElementById('read_text').innerHTML = text; //outputs to the div
+        console.log(typeof reader.result); //double checking that this is a string
+        //var output = reader.result.substring(0, 200); //gets the first 200 characters
+
         //now with our text we need to parse the string
-        var new_text = text.split("/[()]/");
-        console.log(new_text);
+        var new_text = text.split(/[()]+/); //this splits the strings by the parentheses
+        console.log("printing out the text using the console.table")
+        console.table(new_text);
+        var startLocation = new_text.indexOf(' start'); //this is finding the position of where 'start' is
+        var finishLocation = new_text.indexOf(' finish');  //this is finding the position of where 'finish' is
+        start = startLocation + 1; //this is the start coordinates
+        finish = finishLocation + 1;  //this is the end coordinates
+        width = new_text[1];
+        printGrid();
         document.getElementById('read_text').innerHTML = new_text;
+        document.getElementById('array').innerHTML = new_text[5]; //printing a specific value in the array
       };
       reader.readAsText(input.files[0]);
     };
+    var printGrid = function(){
+      console.log(width);
+      var size = width.split(",");
+      var gridWidth = size[1]; //this is the width of the grid
+      console.log(gridWidth);
+    }
     </script>
     </body>
 </html>
