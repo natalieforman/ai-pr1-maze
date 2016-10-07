@@ -22,7 +22,6 @@
         <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
     </head>
     <body>
-        
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -30,10 +29,11 @@
         <div class="row">
           <div class="col-sm-12">
             <h1>Mount Olympus</h1>
-            <input type="file" id="files" name="file" />
+            <input type="file" id="files" name="file" onchange='openFile(event)' />
               <br>
             <button onclick="readFile()">Print File</button>
             <div id="byte_content"></div>
+            <div id="read_text"></div>
           </div>
         </div>
          <!--Creating the game space here -->
@@ -42,31 +42,41 @@
           </div>
         </div>
       </div>
-        
-    <!--https://www.html5rocks.com/en/tutorials/file/dndfiles/-->
-    <script>
-      function readFile() {
 
+    <!--https://www.html5rocks.com/en/tutorials/file/dndfiles/
+  https://developer.mozilla.org/en-US/docs/Web/API/FileReader -->
+    <script>
+    /*  function readFile() {
         var files = document.getElementById('files').files;
         if (!files.length) {
           alert('Please select a file!');
           return;
         }
-
         var file = files[0];
         var reader = new FileReader();
-
         // If we use onloadend, we need to check the readyState.
         reader.onloadend = function(evt) {
           if (evt.target.readyState == FileReader.DONE) { // DONE == 2
             document.getElementById('byte_content').textContent = evt.target.result;
           }
         };
-
         reader.readAsBinaryString(file);
-      }
-
+      }*/
+      var openFile = function(event) {
+      var input = event.target;
+      var reader = new FileReader();
+      reader.onload = function(){
+        var text = reader.result;
+        var output = reader.result.substring(0, 200); //gets the first 200 characters
+        console.log(text);
+        //document.getElementById('read_text').innerHTML = text; //outputs to the div
+        //now with our text we need to parse the string
+        var new_text = text.split("/[()]/");
+        console.log(new_text);
+        document.getElementById('read_text').innerHTML = new_text;
+      };
+      reader.readAsText(input.files[0]);
+    };
     </script>
-        
     </body>
 </html>
