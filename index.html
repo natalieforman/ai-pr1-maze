@@ -53,21 +53,21 @@ http://www.javascripture.com/FileReader
 -->
     <script>
         /*  function readFile() {
-                var files = document.getElementById('files').files;
-                if (!files.length) {
-                  alert('Please select a file!');
-                  return;
-                }
-                var file = files[0];
-                var reader = new FileReader();
-                // If we use onloadend, we need to check the readyState.
-                reader.onloadend = function(evt) {
-                  if (evt.target.readyState == FileReader.DONE) { // DONE == 2
-                    document.getElementById('byte_content').textContent = evt.target.result;
-                  }
-                };
-                reader.readAsBinaryString(file);
-              }*/
+                        var files = document.getElementById('files').files;
+                        if (!files.length) {
+                          alert('Please select a file!');
+                          return;
+                        }
+                        var file = files[0];
+                        var reader = new FileReader();
+                        // If we use onloadend, we need to check the readyState.
+                        reader.onloadend = function(evt) {
+                          if (evt.target.readyState == FileReader.DONE) { // DONE == 2
+                            document.getElementById('byte_content').textContent = evt.target.result;
+                          }
+                        };
+                        reader.readAsBinaryString(file);
+                      }*/
         /*global variables*/
         var start, finish, gridwidth;
         var openFile = function(event) {
@@ -83,14 +83,6 @@ http://www.javascripture.com/FileReader
                 console.table(new_text);
                 printGrid(new_text);
                 findStart(new_text);
-              /*this piece of code may be unnecessary
-                var indexes = []; //this will store all of the indexes in the array that is of the ' tile'
-                for (var i = 0; i < new_text.length; i++) {
-                    if (new_text[i] === " tile") {
-                        indexes.push(i + 1); //we know that for ever instance of the tile we know that the coordinates of that tile is index[i]+1;
-                    }
-                }
-                console.table(indexes);*/
                 document.getElementById('read_text').innerHTML = new_text;
                 /*in this part of the parsing I am splicing the array at the completed text, since all of the level_design coordinates listed for the wall, touch, gem and altar are the same as the previous coordinates. This will prevent any redrawing of a tile*/
                 var splicelocation = new_text.indexOf(' completed __level_design');
@@ -98,59 +90,53 @@ http://www.javascripture.com/FileReader
                 var newText = new_text.splice(0, splicelocation);
                 console.table(newText);
                 document.getElementById('array').innerHTML = newText;
-
                 /*touch
                 touch((3,1),2)
                 for the touch the third value after the coordinates is the number of times a user must touch the block to advance*/
                 /*creating objects for the tiles based on the touch as well*/
                 //this is an example of what properties the tile should have
                 /*http://stackoverflow.com/questions/16109108/javascript-creating-objects-multiple-approaches-any-differences
-                */
-
+                 */
                 /* there are 52 objects being created with the coordinates and the type of sprite"*/
                 function tiles(coordinates, touch, sprite) {
-                  this.coordinates = coordinates; //it is the coordinate
-                  //this.touch = touch; //can be 1,2,3
-                  this.sprite = sprite; //can be a wall, altar, gem, or the default tile
+                    this.coordinates = coordinates; //it is the coordinate
+                    //this.touch = touch; //can be 1,2,3
+                    this.sprite = sprite; //can be a wall, altar, gem, or the default tile
                 }
                 var number_objects = gridwidth * gridwidth; //the total amount of grid blocks that will appear on the screen
-                var k=0
+                var counter = 0;
                 for (var i = 0; i < newText.length; i++) {
                     if (newText[i] === ",wall") {
-                      k++;
-                      var j=i-1;
-                    //  console.log(k); printed this out to find the number of wall objects
-                      var coor = newText[j];
-                      window["Object"+k] = new tiles(coor,"null","wall");
+                        counter++; //increment the counter
+                        var j = i - 1; //subtracting 1 because the coordinate location in the array is before the wall
+                        //  console.log(k); printed this out to find the number of wall objects
+                        var coor = newText[j];
+                        window["Object" + counter] = new tiles(coor, "null", "wall"); //creating the object
+                    } else if (newText[i] === ",altar") {
+                        counter++; //increment the counter
+                        var j = i - 1; //subtracting 1 because the coordinate location in the array is before the altar
+                        var coor = newText[j];
+                        window["Object" + counter] = new tiles(coor, "null", "altar"); //creating the object
+                    } else if (newText[i] === ",gem") {
+                        counter++; //increment the counter
+                        var j = i - 1; //subtracting 1 because the coordinate location in the array is before the gem
+                        var coor = newText[j];
+                        window["Object" + counter] = new tiles(coor, "null", "gem"); //creating the object
+                    } else {
+                        continue;
                     }
-                    else if (newText[i] === ",altar") {
-                      k++;
-                      var j=i-1;
-                      var coor = newText[j];
-                      window["Object"+k] = new tiles(coor,"null","altar");
-                    }
-                    else if (newText[i] === ",gem"){
-                      k++;
-                      var j=i-1;
-                      var coor = newText[j];
-                      window["Object"+k] = new tiles(coor,"null","gem");
-                    }
-                    else{
-                      continue;
-                    }
-                  }
-                  console.log("number of tiles beng created :" +k);
+                }
+                console.log("number of tiles being created :" + counter);
                 /*  var number_regular_tiles = number_objects - k;
                   for (var i = 0; i < number_regular_tiles; i++) {
                     k++;
 
                   }*/
-
-                  console.log("sprite of Object51: "+Object51.sprite);
-                  console.log("coordinates of Object1: "+Object1.coordinates);
-                  console.log("coordinates of Object2: "+Object2.coordinates);
-                  console.log("coordinates of Object50: "+Object50.coordinates);
-              }
+                console.log("sprite of Object51: " + Object51.sprite);
+                console.log("coordinates of Object1: " + Object1.coordinates);
+                console.log("coordinates of Object2: " + Object2.coordinates);
+                console.log("coordinates of Object50: " + Object50.coordinates);
+            }
             reader.readAsText(input.files[0]);
         };
         var findStart = function(x) {
@@ -163,14 +149,13 @@ http://www.javascripture.com/FileReader
             return start, finish;
         }
         var printGrid = function(x) {
-                var width = x[1];
-                console.log(width);
-                var size = width.split(",");
-                gridwidth = size[1]; //this is the width of the grid
-                console.log(gridwidth);
-                return gridwidth; //now we know the width of the grid and assuming that it will always be a square we know that the height is also the same as the width
-            }
-            /*from the output we know the tiles and the adj and the type of tiles*/
+            var width = x[1];
+            console.log(width);
+            var size = width.split(",");
+            gridwidth = size[1]; //this is the width of the grid
+            console.log(gridwidth);
+            return gridwidth; //now we know the width of the grid and assuming that it will always be a square we know that the height is also the same as the width
+        }
     </script>
 </body>
 
