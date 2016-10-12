@@ -66,7 +66,6 @@ http://www.javascripture.com/FileReader
         };
         reader.readAsBinaryString(file);
       }*/
-      var start, finish;
       var openFile = function(event) {
       var input = event.target;
       var reader = new FileReader();
@@ -74,18 +73,12 @@ http://www.javascripture.com/FileReader
         var text = reader.result;
         console.log(typeof reader.result); //double checking that this is a string
         //var output = reader.result.substring(0, 200); //gets the first 200 characters
-
         //now with our text we need to parse the string
         var new_text = text.split(/[()]+/); //this splits the strings by the parentheses
-        console.log("printing out the text using the console.table")
+        console.log("printing out the text using the console.table");
         console.table(new_text);
-        var startLocation = new_text.indexOf(' start'); //this is finding the position of where 'start' is
-        var finishLocation = new_text.indexOf(' finish');  //this is finding the position of where 'finish' is
-        start = startLocation + 1; //this is the start coordinates
-        finish = finishLocation + 1;  //this is the end coordinates
-        var width = new_text[1];
-        console.log(width);
-        printGrid(width);
+        printGrid(new_text);
+        findStart(new_text);
         var indexes = []; //this will store all of the indexes in the array that is of the ' tile'
         for(var i = 0; i < new_text.length; i++){
             if (new_text[i] === " tile"){
@@ -98,8 +91,19 @@ http://www.javascripture.com/FileReader
       };
       reader.readAsText(input.files[0]);
     };
+    var findStart = function(x){
+      var startLocation = x.indexOf(' start') + 1; //this is finding the position of where 'start' is
+      var finishLocation = x.indexOf(' finish') +1 ;  //this is finding the position of where 'finish' is
+      var start = x[startLocation]; //this is the start coordinates
+      var finish = x[finishLocation];  //this is the end coordinates
+      console.log(start);
+      console.log(finish);
+      return start, finish;
+    }
     var printGrid = function(x){
-      var size = x.split(",");
+      var width = x[1];
+      console.log(width);
+      var size = width.split(",");
       var gridwidth = size[1]; //this is the width of the grid
       console.log(gridwidth);
       return gridwidth; //now we know the width of the grid and assuming that it will always be a square we know that the height is also the same as the width
