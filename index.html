@@ -33,11 +33,6 @@
                 <h1>Mount Olympus</h1>
                 <input type="file" id="files" name="file" onchange='openFile(event)' />
                 <br>
-                <button onclick="readFile()">Print File</button>
-                <div id="byte_content"></div>
-                <div id="read_text"></div>
-                <div id="array"></div>
-                <div id="print_array"></div>
             </div>
         </div>
         <!--Creating the game space here -->
@@ -52,22 +47,6 @@
 http://www.javascripture.com/FileReader
 -->
     <script>
-        /*  function readFile() {
-                        var files = document.getElementById('files').files;
-                        if (!files.length) {
-                          alert('Please select a file!');
-                          return;
-                        }
-                        var file = files[0];
-                        var reader = new FileReader();
-                        // If we use onloadend, we need to check the readyState.
-                        reader.onloadend = function(evt) {
-                          if (evt.target.readyState == FileReader.DONE) { // DONE == 2
-                            document.getElementById('byte_content').textContent = evt.target.result;
-                          }
-                        };
-                        reader.readAsBinaryString(file);
-                      }*/
         /*global variables*/
         var start, finish, gridwidth;
         var openFile = function(event) {
@@ -83,13 +62,13 @@ http://www.javascripture.com/FileReader
                 console.table(new_text);
                 printGrid(new_text);
                 findStart(new_text);
-                document.getElementById('read_text').innerHTML = new_text;
+                //document.getElementById('read_text').innerHTML = new_text;
                 /*in this part of the parsing I am splicing the array at the completed text, since all of the level_design coordinates listed for the wall, touch, gem and altar are the same as the previous coordinates. This will prevent any redrawing of a tile*/
                 var splicelocation = new_text.indexOf(' completed __level_design');
                 console.log("Location to splice at: " + splicelocation);
                 var newText = new_text.splice(0, splicelocation);
                 console.table(newText);
-                document.getElementById('array').innerHTML = newText;
+                //document.getElementById('array').innerHTML = newText;
                 /*touch
                 touch((3,1),2)
                 for the touch the third value after the coordinates is the number of times a user must touch the block to advance*/
@@ -127,11 +106,6 @@ http://www.javascripture.com/FileReader
                     }
                 }
                 console.log("number of tiles being created :" + counter);
-                /*  var number_regular_tiles = number_objects - k;
-                  for (var i = 0; i < number_regular_tiles; i++) {
-                    k++;
-
-                  }*/
                 console.log("sprite of Object51: " + Object51.sprite);
                 console.log("coordinates of Object1: " + Object1.coordinates);
                 console.log("coordinates of Object2: " + Object2.coordinates);
