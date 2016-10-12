@@ -104,17 +104,57 @@ http://www.javascripture.com/FileReader
                 for the touch the third value after the coordinates is the number of times a user must touch the block to advance*/
                 /*creating objects for the tiles based on the touch as well*/
                 //this is an example of what properties the tile should have
-                var Tiles = {
-                  coordinate:"3,5", //it is the coordinate
-                  touch:2, //can be 1,2,3
-                  sprite:"default" //can be a wall, altar, gem, or the default tile
-                };
+                /*http://stackoverflow.com/questions/16109108/javascript-creating-objects-multiple-approaches-any-differences
 
+                https://www.codecademy.com/en/forum_questions/51068e93f73ad4947a005629
+                not sure if objects will work because we will be creating 100 different objects
+                */
+                function tiles(coordinates, touch, sprite) {
+                  this.coordinates = coordinates; //it is the coordinate
+                  this.touch = touch; //can be 1,2,3
+                  this.sprite = sprite; //can be a wall, altar, gem, or the default tile
+                }
+                var number_objects = gridwidth * gridwidth; //the total amount of grid blocks that will appear on the screen
+                var k=0
+                for (var i = 0; i < newText.length; i++) {
+                    if (newText[i] === ",wall") {
+                      k++;
+                      var j=i-1;
+                    //  console.log(k); printed this out to find the number of wall objects
+                      var coor = newText[j];
+                      window["Object"+k] = new tiles(coor,"null","wall");
+                    }
+                    else if (newText[i] === ",altar") {
+                      k++;
+                      var j=i-1;
+                      var coor = newText[j];
+                      window["Object"+k] = new tiles(coor,"null","altar");
+                    }
+                    else if (newText[i] === ",gem"){
+                      k++;
+                      var j=i-1;
+                      var coor = newText[j];
+                      window["Object"+k] = new tiles(coor,"null","gem");
+                    }
+                    else{
+                      continue;
+                    }
+                  }
+                /*  console.log(k);
+                  var number_regular_tiles = number_objects - k;
+                  for (var i = 0; i < number_regular_tiles; i++) {
+                    k++;
 
-            };
+                  }*/
+                  console.log(Object51.sprite);
+                  console.log(Object1.coordinates);
+                  console.log(Object2.coordinates);
+                  console.log(Object50.coordinates);
+                  console.log(Object1.coordinates);
+                  console.log(Object2.coordinates);
+              }
             reader.readAsText(input.files[0]);
         };
-
         var findStart = function(x) {
             var startLocation = x.indexOf(' start') + 1; //this is finding the position of where 'start' is
             var finishLocation = x.indexOf(' finish') + 1; //this is finding the position of where 'finish' is
