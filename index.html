@@ -105,13 +105,12 @@ http://www.javascripture.com/FileReader
                 /*creating objects for the tiles based on the touch as well*/
                 //this is an example of what properties the tile should have
                 /*http://stackoverflow.com/questions/16109108/javascript-creating-objects-multiple-approaches-any-differences
-
-                https://www.codecademy.com/en/forum_questions/51068e93f73ad4947a005629
-                not sure if objects will work because we will be creating 100 different objects
                 */
+
+                /* there are 52 objects being created with the coordinates and the type of sprite"*/
                 function tiles(coordinates, touch, sprite) {
                   this.coordinates = coordinates; //it is the coordinate
-                  this.touch = touch; //can be 1,2,3
+                  //this.touch = touch; //can be 1,2,3
                   this.sprite = sprite; //can be a wall, altar, gem, or the default tile
                 }
                 var number_objects = gridwidth * gridwidth; //the total amount of grid blocks that will appear on the screen
@@ -140,18 +139,17 @@ http://www.javascripture.com/FileReader
                       continue;
                     }
                   }
-                /*  console.log(k);
-                  var number_regular_tiles = number_objects - k;
+                  console.log("number of tiles beng created :" +k);
+                /*  var number_regular_tiles = number_objects - k;
                   for (var i = 0; i < number_regular_tiles; i++) {
                     k++;
 
                   }*/
-                  console.log(Object51.sprite);
-                  console.log(Object1.coordinates);
-                  console.log(Object2.coordinates);
-                  console.log(Object50.coordinates);
-                  console.log(Object1.coordinates);
-                  console.log(Object2.coordinates);
+
+                  console.log("sprite of Object51: "+Object51.sprite);
+                  console.log("coordinates of Object1: "+Object1.coordinates);
+                  console.log("coordinates of Object2: "+Object2.coordinates);
+                  console.log("coordinates of Object50: "+Object50.coordinates);
               }
             reader.readAsText(input.files[0]);
         };
