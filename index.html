@@ -98,9 +98,19 @@ http://www.javascripture.com/FileReader
                 var newText = new_text.splice(0, splicelocation);
                 console.table(newText);
                 document.getElementById('array').innerHTML = newText;
+
                 /*touch
                 touch((3,1),2)
                 for the touch the third value after the coordinates is the number of times a user must touch the block to advance*/
+                /*creating objects for the tiles based on the touch as well*/
+                //this is an example of what properties the tile should have
+                var Tiles = {
+                  coordinate:"3,5", //it is the coordinate
+                  touch:2, //can be 1,2,3
+                  sprite:"default" //can be a wall, altar, gem, or the default tile
+                };
+
+
             };
             reader.readAsText(input.files[0]);
         };
