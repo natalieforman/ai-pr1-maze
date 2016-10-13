@@ -21,6 +21,7 @@
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+    <script src="board.js"></script>
 </head>
 
 <body>
@@ -37,7 +38,7 @@
         </div>
         <!--Creating the game space here -->
         <div class="row">
-            <div class="col-sm-1">
+            <div id="game" class="col-sm-12">
             </div>
         </div>
     </div>
@@ -49,6 +50,7 @@ http://www.javascripture.com/FileReader
     <script>
         /*global variables*/
         var start, finish, gridwidth;
+        var objects = [];
         var openFile = function(event) {
             var input = event.target;
             var reader = new FileReader();
@@ -60,8 +62,8 @@ http://www.javascripture.com/FileReader
                 var new_text = text.split(/[()]+/); //this splits the strings by the parentheses
                 console.log("printing out the text using the console.table");
                 console.table(new_text);
-                printGrid(new_text);
-                findStart(new_text);
+                var size = printGrid(new_text);
+                var startPos = findStart(new_text);
                 //document.getElementById('read_text').innerHTML = new_text;
                 /*in this part of the parsing I am splicing the array at the completed text, since all of the level_design coordinates listed for the wall, touch, gem and altar are the same as the previous coordinates. This will prevent any redrawing of a tile*/
                 var splicelocation = new_text.indexOf(' completed __level_design');
@@ -82,7 +84,6 @@ http://www.javascripture.com/FileReader
                     //this.touch = touch; //can be 1,2,3
                     this.sprite = sprite; //can be a wall, altar, gem, or the default tile
                 }
-                var number_objects = gridwidth * gridwidth; //the total amount of grid blocks that will appear on the screen
                 var counter = 0;
                 for (var i = 0; i < newText.length; i++) {
                     if (newText[i] === ",wall") {
@@ -91,6 +92,7 @@ http://www.javascripture.com/FileReader
                         //  console.log(k); printed this out to find the number of wall objects
                         var coor = newText[j];
                         window["Object" + counter] = new tiles(coor, "null", "wall"); //creating the object
+                        objects.push(eval("Object" + counter));
                     } else if (newText[i] === ",altar") {
                         counter++; //increment the counter
                         var j = i - 1; //subtracting 1 because the coordinate location in the array is before the altar
@@ -110,6 +112,10 @@ http://www.javascripture.com/FileReader
                 console.log("coordinates of Object1: " + Object1.coordinates);
                 console.log("coordinates of Object2: " + Object2.coordinates);
                 console.log("coordinates of Object50: " + Object50.coordinates);
+                createBoard(size, startPos[0], startPos[1]);
+                for (var i=0; i < objects.length; i++){
+                  setTile(size, objects[i]);
+                }
             }
             reader.readAsText(input.files[0]);
         };
@@ -118,17 +124,19 @@ http://www.javascripture.com/FileReader
             var finishLocation = x.indexOf(' finish') + 1; //this is finding the position of where 'finish' is
             start = x[startLocation]; //this is the start coordinates
             finish = x[finishLocation]; //this is the end coordinates
-            console.log(start);
-            console.log(finish);
-            return start, finish;
+            startEnd = [start, finish];
+            return startEnd
         }
         var printGrid = function(x) {
             var width = x[1];
-            console.log(width);
             var size = width.split(",");
             gridwidth = size[1]; //this is the width of the grid
             console.log(gridwidth);
             return gridwidth; //now we know the width of the grid and assuming that it will always be a square we know that the height is also the same as the width
+        }
+        var createBoard = function(total, sPos, fPos){
+          createRectangles(total*total);
+          setSprite(total, sPos, fPos);
         }
     </script>
 </body>

@@ -3,3 +3,42 @@
 h1{
     color: #ab2345;
 }
+
+
+#game{
+	width:730px;
+}
+.tile{
+	width: 70px;
+	height: 70px;
+	float: left;
+	border: 1px solid black;
+
+	&.wall{
+		background-color: #ccc;
+	}
+
+	&.free{
+			background-color: #eee;
+	}
+	&.start{
+		background-color: #550b23;
+		color: #fff;	
+	}
+	&.finish{
+		background-color: #0b2255;
+		color: #fff;
+	}
+}
+#player.tile{
+	background-color: #550b23;
+	color: #fff;
+}
+#minotaur.tile{
+	background-color: #0b2255;
+	color: #fff;
+}
+#sword.tile{
+	background-color: #333;
+	color: #fff;
+}

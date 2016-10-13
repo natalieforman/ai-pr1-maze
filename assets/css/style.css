@@ -2,8 +2,52 @@
 h1 {
   color: #ab2345;
 }
-#array{
-  background-color: red;
-  color:blue;
-  font-size: 18px;
+
+/* line 8, ../compass/sass/style.scss */
+#game {
+  width: 730px;
+}
+
+/* line 11, ../compass/sass/style.scss */
+.tile {
+  width: 70px;
+  height: 70px;
+  float: left;
+  border: 1px solid black;
+}
+/* line 17, ../compass/sass/style.scss */
+.tile.wall {
+  background-color: #ccc;
+}
+/* line 21, ../compass/sass/style.scss */
+.tile.free {
+  background-color: #eee;
+}
+/* line 24, ../compass/sass/style.scss */
+.tile.start {
+  background-color: #550b23;
+  color: #fff;
+}
+/* line 28, ../compass/sass/style.scss */
+.tile.finish {
+  background-color: #0b2255;
+  color: #fff;
+}
+
+/* line 33, ../compass/sass/style.scss */
+#player.tile {
+  background-color: #550b23;
+  color: #fff;
+}
+
+/* line 37, ../compass/sass/style.scss */
+#minotaur.tile {
+  background-color: #0b2255;
+  color: #fff;
+}
+
+/* line 41, ../compass/sass/style.scss */
+#sword.tile {
+  background-color: #333;
+  color: #fff;
 }
