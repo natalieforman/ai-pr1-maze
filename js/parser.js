@@ -28,20 +28,20 @@ var openFile = function(event) {
                 counter++; //increment the counter
                 var j = i - 1; //subtracting 1 because the coordinate location in the array is before the wall
                 var coor = newText[j];
-                window["Object" + counter] = new tiles(coor,"null", "wall"); //creating the object
-                objects.push(eval("Object" + counter));
+                var tile_object  = new tiles(coor,"null", "wall"); //creating the object
+                objects.push(tile_object);
             } else if (newText[i] === ",altar") {
                 counter++; //increment the counter
                 var j = i - 1; //subtracting 1 because the coordinate location in the array is before the altar
                 var coor = newText[j];
-                window["Object" + counter] = new tiles(coor,"null", "altar"); //creating the object
-                objects.push(eval("Object" + counter));
+                var tile_object = new tiles(coor,"null", "altar"); //creating the object
+                objects.push(tile_object);
             } else if (newText[i] === ",gem") {
                 counter++; //increment the counter
                 var j = i - 1; //subtracting 1 because the coordinate location in the array is before the gem
                 var coor = newText[j];
-                window["Object" + counter] = new tiles(coor,"null", "gem"); //creating the object
-                objects.push(eval("Object" + counter));
+                var tile_object = new tiles(coor,"null", "gem"); //creating the object
+                objects.push(tile_object);
             } else {
                 continue;
             }
