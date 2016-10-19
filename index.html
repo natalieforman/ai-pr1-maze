@@ -34,7 +34,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <h1>Mount Olympus</h1>
-                <div class="dropdown">
+              <!--  <div class="dropdown">
                   <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Choose Level
                   <span class="caret"></span></button>
                   <ul class="dropdown-menu">
@@ -43,6 +43,40 @@
                     <li><a href="#">Level 3</a></li>
                   </ul>
                 </div>
+
+              http://bootsnipp.com/snippets/featured/multi-level-dropdown-menu-bs3
+
+            -->
+                <div class="dropdown">
+                  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Choose Level
+                    <span class="caret"></span></button>
+    		      <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+              <li class="dropdown-submenu">
+                <a tabindex="-1" href="#">Easy</a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Easy 1</a></li>
+                  <li><a href="#">Easy 2</a></li>
+                  <li><a href="#">Easy 3</a></li>
+                </ul>
+              </li>
+              <li class="dropdown-submenu">
+                <a tabindex="-1" href="#">Medium</a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Medium 1</a></li>
+                  <li><a href="#">Medium 2</a></li>
+                  <li><a href="#">Medium 3</a></li>
+                </ul>
+              </li>
+              <li class="dropdown-submenu">
+                <a tabindex="-1" href="#">Hard</a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Hard 1</a></li>
+                  <li><a href="#">Hard 2</a></li>
+                  <li><a href="#">Hard 3</a></li>
+                </ul>
+              </li>
+            </ul>
+        </div>
                 <br />
                 <input type="file" id="files" name="file" onchange='openFile(event)' />
                 <br>

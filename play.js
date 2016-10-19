@@ -31,7 +31,7 @@ function win(event) {
 //Calling this function when the user leaves the game area
 function endGame(event) {
     time_end = new Date();
-    alert("You Left the Game");
+    alert("You left the game and are out of bounds");
     return time_end;
 }
 
