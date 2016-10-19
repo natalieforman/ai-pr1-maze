@@ -1,6 +1,6 @@
 var time_end,
     time_start;
-
+//Calling this function when the user mouseovers any of the walls
 function lose(event) {
     var wall = document.querySelectorAll(".wall");
     for (var i = 0; i < wall.length; i++) {
@@ -8,6 +8,8 @@ function lose(event) {
         wall[i].classList.add("wallMouse");
     }
 }
+//Calling this function when the user mouseovers the regular free tiles
+//currently this is not working
 function regular(event) {
     console.log("you cannot walk through walls");
     loser = true;
@@ -18,17 +20,21 @@ function regular(event) {
         console.log("just walking the game");
     }
 }
+
+//calling this function when the user wins the game and makes it to the finish tile
 function win(event) {
     time_end = new Date();
     alert("You Win");
     return time_end;
 }
+
 //Calling this function when the user leaves the game area
 function endGame(event) {
     time_end = new Date();
     alert("You Left the Game");
     return time_end;
 }
+
 //Calling this function when the user first hovers over the start
 function startGame(event) {
     //timer function begins
@@ -45,12 +51,14 @@ function startGame(event) {
     }
     return time_start;
 }
+
 //Calling this function when the user is not hovering over the start
 function continueGame(event) {
     var tiles = document.getElementById("game").children;
     tiles[0].classList.remove("startMouse");
     tiles[0].classList.add("start");
 }
+
 //Calling this function when the user is not hovering over the walls
 function leaveWall(event) {
     var tiles = document.getElementById("game").children;
@@ -65,6 +73,7 @@ function leaveWall(event) {
         wall_array[i].classList.add("wall");
     }
 }
+
 //This function will be called when the user picks up the item
 function pickupItem(event) {
     var gem = document.querySelectorAll(".gem");
@@ -80,6 +89,7 @@ function dropoffItem(event) {
     altar[0].classList.remove("altar");
     altar[0].classList.add("altarClick");
 }
+
 function play() {
     var tiles = document.getElementById("game").children;
     var tile = document.querySelectorAll(".tile");
@@ -120,4 +130,4 @@ function timer(end, start) {
     document.getElementById('minutes').innerHTML = mins;
     document.getElementById('seconds').innerHTML = secs;
 }
-timer(time_end, time_start);
+//timer(time_end, time_start);
