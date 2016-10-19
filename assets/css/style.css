@@ -21,7 +21,7 @@ h1 {
 }
 /* line 21, ../compass/sass/style.scss */
 .tile.free {
-  background-color: #eee;
+/*  background-color: #eee;*/
 }
 /* line 24, ../compass/sass/style.scss */
 .tile.start {
@@ -57,7 +57,12 @@ h1 {
 .wallMouse{
   background-color: #f7bbbb;
 }
-
+.tileMouse{
+  background-color: #c4edc6;
+}
+.tileLeave{
+  background-color: green;
+}
 .gemClick{
   background-color: #efe937;
 }

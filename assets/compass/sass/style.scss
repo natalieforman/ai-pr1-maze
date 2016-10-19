@@ -19,7 +19,7 @@ h1{
 	}
 
 	&.free{
-			background-color: #eee;
+		/*	background-color: #eee;*/
 	}
 	&.start{
 		background-color: #550b23;
@@ -54,4 +54,10 @@ h1{
 }
 .altarClick{
   background-color: #821b68;
+}
+.tileMouse{
+  background-color: #c4edc6;
+}
+.tileLeave{
+  background-color: green;
 }
