@@ -40,7 +40,7 @@ function setTile(width, tileObj){
 	var coord = tileObj.coordinates.split(',');
 	//calculate which tile number this is
 	var sNum = width*(coord[0]-1)+(coord[1]-1);
-	//console.log(tileObj.sprite);
+	console.log(tileObj.sprite);
 	startTile = document.getElementById("tile_"+sNum);
 	startTile.className += tileObj.sprite;
 }

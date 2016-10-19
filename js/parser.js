@@ -50,6 +50,7 @@ var openFile = function(event) {
         for (var i = 0; i < objects.length; i++) {
             setTile(size, objects[i]);
         }
+        play();
     }
     reader.readAsText(input.files[0]);
 };

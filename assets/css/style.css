@@ -51,3 +51,16 @@ h1 {
   background-color: #333;
   color: #fff;
 }
+.startMouse{
+  background-color: #bbd2f7;
+}
+.wallMouse{
+  background-color: #f7bbbb;
+}
+
+.gemClick{
+  background-color: #efe937;
+}
+.altarClick{
+  background-color: #821b68;
+}

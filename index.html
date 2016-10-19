@@ -24,6 +24,7 @@
     <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
     <script src="js/parser.js"></script>
     <script src="board.js"></script>
+    <script src="play.js"></script>
 </head>
 <body>
     <!--[if lt IE 8]>
@@ -45,6 +46,16 @@
                 <br />
                 <input type="file" id="files" name="file" onchange='openFile(event)' />
                 <br>
+            </div>
+        </div>
+        <div class="row">
+          <!-- this area will be for the timer-->
+            <div id="timer" class="col-sm-12">
+              <div id="years"></div>
+              <div id="days"></div>
+              <div id="hours"></div>
+              <div id="minutes"></div>
+              <div id="seconds"></div>
             </div>
         </div>
         <!--Creating the game space here -->
