@@ -28,19 +28,42 @@ var openFile = function(event) {
                 counter++; //increment the counter
                 var j = i - 1; //subtracting 1 because the coordinate location in the array is before the wall
                 var coor = newText[j];
-                var tile_object  = new tiles(coor,"null", "wall"); //creating the object
+                //console.log("wall cooridinates: "+coor);
+                var tile_object = new tiles(coor, "null", "wall"); //creating the object
                 objects.push(tile_object);
             } else if (newText[i] === ",altar") {
                 counter++; //increment the counter
                 var j = i - 1; //subtracting 1 because the coordinate location in the array is before the altar
                 var coor = newText[j];
-                var tile_object = new tiles(coor,"null", "altar"); //creating the object
+              //  console.log("altar cooridinates: "+coor);
+                var tile_object = new tiles(coor, "null", "altar"); //creating the object
                 objects.push(tile_object);
             } else if (newText[i] === ",gem") {
                 counter++; //increment the counter
                 var j = i - 1; //subtracting 1 because the coordinate location in the array is before the gem
                 var coor = newText[j];
-                var tile_object = new tiles(coor,"null", "gem"); //creating the object
+                //console.log("gem cooridinates: "+coor);
+                var tile_object = new tiles(coor, "null", "gem"); //creating the object
+                objects.push(tile_object);
+            } else if (newText[i] === ",hades") {
+                counter++; //increment the counter
+                var j = i - 1; //subtracting 1 because the coordinate location in the array is before the gem
+                var coor = newText[j];
+                //console.log("hades cooridinates: "+coor);
+                var tile_object = new tiles(coor, "null", "hades"); //creating the object
+                objects.push(tile_object);
+            } else if (newText[i] === ",sky") {
+                counter++; //increment the counter
+                var j = i - 1; //subtracting 1 because the coordinate location in the array is before the gem
+                var coor = newText[j];
+                //console.log("sky cooridinates: "+coor);
+                var tile_object = new tiles(coor, "null", "sky"); //creating the object
+                objects.push(tile_object);
+            } else if (newText[i] === ",shoes") {
+                counter++; //increment the counter
+                var j = i - 1; //subtracting 1 because the coordinate location in the array is before the gem
+                var coor = newText[j];
+                var tile_object = new tiles(coor, "null", "shoes"); //creating the object
                 objects.push(tile_object);
             } else {
                 continue;
@@ -50,7 +73,7 @@ var openFile = function(event) {
         for (var i = 0; i < objects.length; i++) {
             setTile(size, objects[i]);
         }
-        play();
+        play(); //adding the play function here after we have initialized the board
     }
     reader.readAsText(input.files[0]);
 };
