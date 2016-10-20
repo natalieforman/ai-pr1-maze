@@ -8,7 +8,7 @@ h1{
 #game{
 	width:730px;
 }
-.tile{
+.e_tile{
 	width: 70px;
 	height: 70px;
 	float: left;
@@ -30,15 +30,37 @@ h1{
 		color: #fff;
 	}
 }
-#player.tile{
+.m_tile{
+	width: 45px;
+	height: 45px;
+	float: left;
+	border: 1px solid black;
+
+	&.wall{
+		background-color: #ccc;
+	}
+
+	&.free{
+		/*	background-color: #eee;*/
+	}
+	&.start{
+		background-color: #550b23;
+		color: #fff;
+	}
+	&.finish{
+		background-color: #0b2255;
+		color: #fff;
+	}
+}
+#player.e_tile, #player.m_tile{
 	background-color: #550b23;
 	color: #fff;
 }
-#minotaur.tile{
+#minotaur.e_tile, #player.m_tile{
 	background-color: #0b2255;
 	color: #fff;
 }
-#sword.tile{
+#sword.e_tile, #player.m_tile{
 	background-color: #333;
 	color: #fff;
 }

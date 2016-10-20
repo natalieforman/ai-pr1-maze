@@ -1,8 +1,14 @@
 //Wall, free, player, minotaur, sword, exit
 function createRectangles(total) {
+	console.log(total);
 	for (var i = 0; i<total;i++){
 		var tile = document.createElement('div');
-		tile.className = "tile ";;
+		if (total/10 == 10) {
+			tile.className = "e_tile ";
+		}
+		else if (total/15 == 15){
+			tile.className = "m_tile ";
+		}
 		tile.id = "tile_" + i;
 		document.getElementById("game").appendChild(tile);
 	}
