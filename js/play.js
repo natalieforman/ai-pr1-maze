@@ -82,7 +82,7 @@ function win(event) {
 //Calling this function when the user leaves the game area
 function endGame(event) {
     time_end = new Date();
-    //alert("You left the game and are out of bounds");
+    alert("You left the game and are out of bounds");
     return time_end;
 }
 
@@ -158,6 +158,7 @@ function dropoffItem(event) {
     if (hades.length != 0) {
         hades[0].classList.remove("hades");
         hades[0].classList.add("hadesClick");
+        console.log("you just met hades");
     } else if (altar.length != 0) {
         altar[0].classList.remove("altar");
         altar[0].classList.add("altarClick");
