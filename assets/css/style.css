@@ -1,110 +1,148 @@
 /* line 3, ../compass/sass/style.scss */
 h1 {
+  @import url("https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,700");
+  font-family: "Roboto Slab", serif;
+  font-weight: bold;
+  font-size: 48px;
+  text-align: center;
   color: #ab2345;
 }
 
-/* line 8, ../compass/sass/style.scss */
+/* line 13, ../compass/sass/style.scss */
 #game {
   width: 730px;
 }
 
-/* line 11, ../compass/sass/style.scss */
+/* line 16, ../compass/sass/style.scss */
 .e_tile {
   width: 70px;
   height: 70px;
   float: left;
-  border: 1px solid black;
+  border: 2px solid #333;
+  background-color: #eee;
 }
-/* line 17, ../compass/sass/style.scss */
+/* line 23, ../compass/sass/style.scss */
 .e_tile.wall {
+  background-image: url(../images/e_wall.jpg);
   background-color: #ccc;
 }
-/* line 21, ../compass/sass/style.scss */
-.e_tile.free {
-  /*	background-color: #eee;*/
-}
-/* line 24, ../compass/sass/style.scss */
+/* line 27, ../compass/sass/style.scss */
 .e_tile.start {
+  background-image: url(../images/start.jpg);
   background-color: #550b23;
   color: #fff;
 }
-/* line 28, ../compass/sass/style.scss */
+/* line 32, ../compass/sass/style.scss */
 .e_tile.finish {
+  background-image: url(../images/door.jpg);
+  background-color: #0b2255;
+  color: #fff;
+}
+/* line 37, ../compass/sass/style.scss */
+.e_tile.altar {
+  /*Minotaur*/
+  background-image: url(../images/minotaur.jpg);
+  background-color: #0b2255;
+  color: #fff;
+}
+/* line 43, ../compass/sass/style.scss */
+.e_tile.gem {
+  /*Sword*/
+  background-image: url(../images/sword.jpg);
   background-color: #0b2255;
   color: #fff;
 }
 
-/* line 33, ../compass/sass/style.scss */
+/* line 50, ../compass/sass/style.scss */
 .m_tile {
   width: 45px;
   height: 45px;
   float: left;
   border: 1px solid black;
+  /*message*/
+  /*sandals*/
+  /*sky*/
+  /*Hermes?, Solider?*/
+  /*Hades*/
+  /*Key*/
+  /*wall*/
 }
-/* line 39, ../compass/sass/style.scss */
+/* line 56, ../compass/sass/style.scss */
 .m_tile.wall {
   background-color: #ccc;
 }
-/* line 43, ../compass/sass/style.scss */
+/* line 60, ../compass/sass/style.scss */
 .m_tile.free {
   /*	background-color: #eee;*/
 }
-/* line 46, ../compass/sass/style.scss */
+/* line 63, ../compass/sass/style.scss */
 .m_tile.start {
   background-color: #550b23;
   color: #fff;
 }
-/* line 50, ../compass/sass/style.scss */
+/* line 67, ../compass/sass/style.scss */
 .m_tile.finish {
   background-color: #0b2255;
   color: #fff;
 }
+/* line 71, ../compass/sass/style.scss */
+.m_tile.sky {
+  background-color: #8ecbf5;
+}
+/* line 74, ../compass/sass/style.scss */
+.m_tile.message {
+  background-color: #f58eef;
+}
 
-/* line 55, ../compass/sass/style.scss */
+/* line 85, ../compass/sass/style.scss */
 #player.e_tile, #player.m_tile {
   background-color: #550b23;
   color: #fff;
 }
 
-/* line 59, ../compass/sass/style.scss */
+/* line 89, ../compass/sass/style.scss */
 #minotaur.e_tile, #player.m_tile {
   background-color: #0b2255;
   color: #fff;
 }
 
-/* line 63, ../compass/sass/style.scss */
+/* line 93, ../compass/sass/style.scss */
 #sword.e_tile, #player.m_tile {
   background-color: #333;
   color: #fff;
 }
 
 /*mouseover tiles*/
-/* line 68, ../compass/sass/style.scss */
+/* line 98, ../compass/sass/style.scss */
 .startMouse {
+  background-image: url(../images/go.jpg);
   background-color: #bbd2f7;
 }
 
-/* line 71, ../compass/sass/style.scss */
+/* line 102, ../compass/sass/style.scss */
 .wallMouse {
-  background-color: #f7bbbb;
+  background-color: #ccc;
+  background-image: url(../images/e_wall_bad.jpg);
 }
 
-/* line 74, ../compass/sass/style.scss */
+/* line 106, ../compass/sass/style.scss */
 .gemClick {
-  background-color: #efe937;
+  background-image: url(../images/sword_used.jpg);
+  background-color: #ccc;
 }
 
-/* line 77, ../compass/sass/style.scss */
+/* line 110, ../compass/sass/style.scss */
 .altarClick {
-  background-color: #821b68;
+  background-image: url(../images/minotaur_dead.jpg);
+  background-color: #ccc;
 }
 
-/* line 80, ../compass/sass/style.scss */
+/* line 114, ../compass/sass/style.scss */
 .tileMouse {
   background-color: #c4edc6;
 }
 
-/* line 83, ../compass/sass/style.scss */
+/* line 117, ../compass/sass/style.scss */
 .tileLeave {
   background-color: green;
 }

@@ -1,6 +1,11 @@
 @import 'compass/css3';
 
 h1{
+	@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,700');
+	font-family: "Roboto Slab", serif;
+	font-weight: bold;
+	font-size: 48px;
+	text-align: center;
     color: #ab2345;
 }
 
@@ -12,20 +17,32 @@ h1{
 	width: 70px;
 	height: 70px;
 	float: left;
-	border: 1px solid black;
+	border: 2px solid #333;
+	background-color: #eee;
 
 	&.wall{
+		background-image: url(../images/e_wall.jpg);
 		background-color: #ccc;
 	}
-
-	&.free{
-		/*	background-color: #eee;*/
-	}
 	&.start{
+		background-image: url(../images/start.jpg);
 		background-color: #550b23;
 		color: #fff;
 	}
 	&.finish{
+		background-image: url(../images/door.jpg);
+		background-color: #0b2255;
+		color: #fff;
+	}
+	&.altar{
+		/*Minotaur*/
+		background-image: url(../images/minotaur.jpg);
+		background-color: #0b2255;
+		color: #fff;
+	}
+	&.gem{
+		/*Sword*/
+		background-image: url(../images/sword.jpg);
 		background-color: #0b2255;
 		color: #fff;
 	}
@@ -51,6 +68,19 @@ h1{
 		background-color: #0b2255;
 		color: #fff;
 	}
+	&.sky{
+		background-color: #8ecbf5;
+	}
+	&.message{
+		background-color: #f58eef;
+	}
+	/*message*/
+	/*sandals*/
+	/*sky*/
+	/*Hermes?, Solider?*/
+	/*Hades*/
+	/*Key*/
+	/*wall*/
 }
 #player.e_tile, #player.m_tile{
 	background-color: #550b23;
@@ -66,16 +96,20 @@ h1{
 }
 /*mouseover tiles*/
 .startMouse{
+  background-image: url(../images/go.jpg);
   background-color: #bbd2f7;
 }
 .wallMouse{
-  background-color: #f7bbbb;
+  background-color: #ccc;
+  background-image: url(../images/e_wall_bad.jpg);
 }
 .gemClick{
-  background-color: #efe937;
+  background-image: url(../images/sword_used.jpg);
+  background-color: #ccc;
 }
 .altarClick{
-  background-color: #821b68;
+  background-image: url(../images/minotaur_dead.jpg);
+  background-color: #ccc;
 }
 .tileMouse{
   background-color: #c4edc6;
