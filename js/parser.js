@@ -59,13 +59,55 @@ var openFile = function(event) {
                 //console.log("sky cooridinates: "+coor);
                 var tile_object = new tiles(coor, "null", "sky"); //creating the object
                 objects.push(tile_object);
-            } else if (newText[i] === ",shoes") {
+            }
+            else if (newText[i] === ",sandals") {
+                counter++; //increment the counter
+                var j = i - 1; //subtracting 1 because the coordinate location in the array is before the gem
+                var coor = newText[j];
+                //console.log("sky cooridinates: "+coor);
+                var tile_object = new tiles(coor, "null", "sandals"); //creating the object
+                objects.push(tile_object);
+            }
+            else if (newText[i] === ",message") {
+                counter++; //increment the counter
+                var j = i - 1; //subtracting 1 because the coordinate location in the array is before the gem
+                var coor = newText[j];
+                //console.log("sky cooridinates: "+coor);
+                var tile_object = new tiles(coor, "null", "message"); //creating the object
+                objects.push(tile_object);
+            }
+             else if (newText[i] === ",shoes") {
                 counter++; //increment the counter
                 var j = i - 1; //subtracting 1 because the coordinate location in the array is before the gem
                 var coor = newText[j];
                 var tile_object = new tiles(coor, "null", "shoes"); //creating the object
                 objects.push(tile_object);
-            } else {
+            }
+            else if (newText[i] === ",hades") {
+                counter++; //increment the counter
+                var j = i - 1; //subtracting 1 because the coordinate location in the array is before the gem
+                var coor = newText[j];
+                //console.log("sky cooridinates: "+coor);
+                var tile_object = new tiles(coor, "null", "hades"); //creating the object
+                objects.push(tile_object);
+            }
+            else if (newText[i] === ",sandals") {
+                counter++; //increment the counter
+                var j = i - 1; //subtracting 1 because the coordinate location in the array is before the gem
+                var coor = newText[j];
+                //console.log("sky cooridinates: "+coor);
+                var tile_object = new tiles(coor, "null", "sandals"); //creating the object
+                objects.push(tile_object);
+            }
+            else if (newText[i] === ",key") {
+                counter++; //increment the counter
+                var j = i - 1; //subtracting 1 because the coordinate location in the array is before the gem
+                var coor = newText[j];
+                //console.log("sky cooridinates: "+coor);
+                var tile_object = new tiles(coor, "null", "key"); //creating the object
+                objects.push(tile_object);
+            }
+             else {
                 continue;
             }
         }

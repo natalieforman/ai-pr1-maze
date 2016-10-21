@@ -1,0 +1,141 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Mount Olympus</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--Bootstrap -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+    <script src="board.js"></script>
+</head>
+
+<body>
+    <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h1>Mount Olympus</h1>
+                <input type="file" id="files" name="file" onchange='openFile(event)' />
+                <br>
+            </div>
+        </div>
+        <!--Creating the game space here -->
+        <div class="row">
+            <div id="game" class="col-sm-12">
+            </div>
+        </div>
+    </div>
+
+    <!--https://www.html5rocks.com/en/tutorials/file/dndfiles/
+  https://developer.mozilla.org/en-US/docs/Web/API/FileReader
+http://www.javascripture.com/FileReader
+-->
+    <script>
+        /*global variables*/
+        var start, finish, gridwidth;
+        var objects = [];
+        var openFile = function(event) {
+            var input = event.target;
+            var reader = new FileReader();
+            reader.onload = function() {
+                var text = reader.result;
+                console.log(typeof reader.result); //double checking that this is a string
+                //var output = reader.result.substring(0, 200); //gets the first 200 characters
+                //now with our text we need to parse the string
+                var new_text = text.split(/[()]+/); //this splits the strings by the parentheses
+                console.log("printing out the text using the console.table");
+                console.table(new_text);
+                var size = printGrid(new_text);
+                var startPos= findStart(new_text);
+
+                /*in this part of the parsing I am splicing the array at the completed text, since all of the level_design coordinates listed for the wall, touch, gem and altar are the same as the previous coordinates. This will prevent any redrawing of a tile*/
+                var splicelocation = new_text.indexOf(' completed __level_design');
+                console.log("Location to splice at: " + splicelocation);
+                var newText = new_text.splice(0, splicelocation);
+                console.table(newText);
+
+                //this is an example of what properties the tile should have
+                /*http://stackoverflow.com/questions/16109108/javascript-creating-objects-multiple-approaches-any-differences
+                 */
+                /* there are 52 objects being created with the coordinates and the type of sprite"*/
+                function tiles(coordinates, touch, sprite) {
+                    this.coordinates = coordinates; //it is the coordinate
+                    this.sprite = sprite; //can be a wall, altar, gem, or the default tile
+                }
+
+                var counter = 0;
+                for (var i = 0; i < newText.length; i++) {
+                    if (newText[i] === ",wall") {
+                        counter++; //increment the counter
+                        var j = i - 1; //subtracting 1 because the coordinate location in the array is before the wall
+                        //  console.log(k); printed this out to find the number of wall objects
+                        var coor = newText[j];
+                        window["Object" + counter] = new tiles(coor, "null", "wall"); //creating the object
+                        objects.push(eval("Object" + counter));
+                    } else if (newText[i] === ",altar") {
+                        counter++; //increment the counter
+                        var j = i - 1; //subtracting 1 because the coordinate location in the array is before the altar
+                        var coor = newText[j];
+                        window["Object" + counter] = new tiles(coor, "null", "altar"); //creating the object
+                    } else if (newText[i] === ",gem") {
+                        counter++; //increment the counter
+                        var j = i - 1; //subtracting 1 because the coordinate location in the array is before the gem
+                        var coor = newText[j];
+                        window["Object" + counter] = new tiles(coor, "null", "gem"); //creating the object
+                    } else {
+                        continue;
+                    }
+                }
+                console.log(objects);
+                console.log("number of tiles being created :" + counter);
+                console.log("sprite of Object51: " + Object51.sprite);
+                console.log("sprite of Object53: " + objects[2].sprite);
+                console.log("coordinates of Object1: " + Object1.coordinates);
+                console.log("coordinates of Object2: " + Object2.coordinates);
+                console.log("coordinates of Object50: " + Object50.coordinates);
+                createBoard(size, startPos[0], startPos[1]);
+                for (var i=0; i <= 52; i++){
+                  setTile(objects[i]);
+                }
+            }
+            reader.readAsText(input.files[0]);
+        };
+        var findStart = function(x) {
+            var startLocation = x.indexOf(' start') + 1; //this is finding the position of where 'start' is
+            var finishLocation = x.indexOf(' finish') + 1; //this is finding the position of where 'finish' is
+            start = x[startLocation]; //this is the start coordinates
+            finish = x[finishLocation]; //this is the end coordinates
+            startEnd = [start, finish]
+            return startEnd;
+        }
+        var printGrid = function(x) {
+            var width = x[1];
+            var size = width.split(",");
+            gridwidth = size[1]; //this is the width of the grid
+            return gridwidth; //now we know the width of the grid and assuming that it will always be a square we know that the height is also the same as the width
+        }
+        var createBoard = function(total, sPos, fPos){
+          createRectangles(total*total);
+          setSprite(total, sPos, fPos);
+        }
+    </script>
+</body>
+
+</html>

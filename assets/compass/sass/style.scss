@@ -46,21 +46,40 @@ h1{
 		background-color: #0b2255;
 		color: #fff;
 	}
+	&.startMouse{
+  		background-image: url(../images/go.jpg);
+  		background-color: #bbd2f7;
+	}
+	&.gemClick{
+	  background-image: url(../images/sword_used.jpg);
+	  background-color: #ccc;
+	}
+	&.altarClick{
+	  background-image: url(../images/minotaur_dead.jpg);
+	  background-color: #ccc;
+	}
+	&.wallMouse{
+	  background-color: #ccc;
+	  background-image: url(../images/e_wall_bad.jpg);
+	}
 }
 .m_tile{
 	width: 45px;
 	height: 45px;
 	float: left;
-	border: 1px solid black;
+	border: 2px solid #333;
+	background-color: #eee;
 
 	&.wall{
+		background-image: url(../images/e_wall_small.jpg);
 		background-color: #ccc;
 	}
-
-	&.free{
-		/*	background-color: #eee;*/
+	&.wallMouse{
+	  background-color: #ccc;
+	  background-image: url(../images/e_wall_bad_small.jpg);
 	}
 	&.start{
+		background-image: url(../images/start_small.jpg);
 		background-color: #550b23;
 		color: #fff;
 	}
@@ -74,6 +93,25 @@ h1{
 	&.message{
 		background-color: #f58eef;
 	}
+	&.sandals{
+		background-color: #333;
+	}
+	&.hades{
+		background-image: url(../images/hades.jpg);
+		background-color: #333;
+	}
+	&.key{
+		background-image: url(../images/key.jpg);
+		background-color: #aaa;
+	}
+	&.startMouse{
+  		background-image: url(../images/go_small.jpg);
+  		background-color: #bbd2f7;
+	}
+	&.keyClick{
+		background-image: url(../images/start_small.jpg);
+		background-color: #ccc;
+	}
 	/*message*/
 	/*sandals*/
 	/*sky*/
@@ -82,35 +120,8 @@ h1{
 	/*Key*/
 	/*wall*/
 }
-#player.e_tile, #player.m_tile{
-	background-color: #550b23;
-	color: #fff;
-}
-#minotaur.e_tile, #player.m_tile{
-	background-color: #0b2255;
-	color: #fff;
-}
-#sword.e_tile, #player.m_tile{
-	background-color: #333;
-	color: #fff;
-}
+
 /*mouseover tiles*/
-.startMouse{
-  background-image: url(../images/go.jpg);
-  background-color: #bbd2f7;
-}
-.wallMouse{
-  background-color: #ccc;
-  background-image: url(../images/e_wall_bad.jpg);
-}
-.gemClick{
-  background-image: url(../images/sword_used.jpg);
-  background-color: #ccc;
-}
-.altarClick{
-  background-image: url(../images/minotaur_dead.jpg);
-  background-color: #ccc;
-}
 .tileMouse{
   background-color: #c4edc6;
 }
