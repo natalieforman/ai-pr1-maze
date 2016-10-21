@@ -8,11 +8,38 @@ h1{
 	text-align: center;
     color: #ab2345;
 }
-
-
-#game{
-	width:730px;
+h3{
+	font-family: "Roboto Slab", serif;
+	font-weight: bold;
 }
+#levels{
+	overflow: hidden;
+	.level{
+		float: left;
+		width: 200px;
+		font-size: 18px;
+		line-height: 45px;
+	}
+	.e_tile, .m_tile{
+		border: none;
+	}
+	.e_tile.sword{
+		width: 45px;
+		height: 45px;
+		background-image: url(../images/sword_small.jpg);
+	}
+	.letter{
+		background-image: url(../images/message.jpg);
+	}
+	.unlock{
+		background-image: url(../images/key.jpg);
+	}
+}
+#game{
+	width:740px;
+	margin-bottom: 20px;
+}
+
 .e_tile{
 	width: 70px;
 	height: 70px;
@@ -70,13 +97,17 @@ h1{
 	border: 2px solid #333;
 	background-color: #eee;
 
+	&.mountain{
+		background-image: url(../images/mountain.jpg);
+		background-color: #ccc;
+	}
 	&.wall{
-		background-image: url(../images/e_wall_small.jpg);
+		background-image: url(../images/fire.jpg);
 		background-color: #ccc;
 	}
 	&.wallMouse{
 	  background-color: #ccc;
-	  background-image: url(../images/e_wall_bad_small.jpg);
+	  background-image: url(../images/fire_bad.jpg);
 	}
 	&.start{
 		background-image: url(../images/start_small.jpg);
@@ -84,20 +115,20 @@ h1{
 		color: #fff;
 	}
 	&.finish{
+		background-image: url(../images/exit.jpg);
 		background-color: #0b2255;
 		color: #fff;
 	}
 	&.sky{
+		background-image: url(../images/sky.jpg);
 		background-color: #8ecbf5;
 	}
 	&.message{
+		background-image: url(../images/message.jpg);
 		background-color: #f58eef;
 	}
 	&.sandals{
-		background-color: #333;
-	}
-	&.hades{
-		background-image: url(../images/hades.jpg);
+		background-image: url(../images/sandal.jpg);
 		background-color: #333;
 	}
 	&.key{
@@ -109,19 +140,19 @@ h1{
   		background-color: #bbd2f7;
 	}
 	&.keyClick{
-		background-image: url(../images/start_small.jpg);
 		background-color: #ccc;
 	}
 	&.hadesClick{
-		background-color: red;
+		background-image: url(../images/hades.jpg);
+		background-color: #aaa;
 	}
-	/*message*/
-	/*sandals*/
-	/*sky*/
-	/*Hermes?, Solider?*/
-	/*Hades*/
-	/*Key*/
-	/*wall*/
+	&.badMountain{
+		background-image: url(../images/mountain_bad.jpg);
+		background-color: #ccc;
+	}
+	&.sandalsClick, &.messageClick{
+		background-color: #aaa;
+	}
 }
 
 /*mouseover tiles*/

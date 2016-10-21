@@ -9,8 +9,8 @@ function lose(event) {
     }
     var mountain = document.querySelectorAll(".mountain");
     for (var i = 0; i < mountain.length; i++) {
-        mountain[i].classList.remove("wall");
-        mountain[i].classList.add("wallMouse");
+        mountain[i].classList.remove("mountain");
+        mountain[i].classList.add("badMountain");
     }
 }
 
@@ -82,7 +82,7 @@ function win(event) {
 //Calling this function when the user leaves the game area
 function endGame(event) {
     time_end = new Date();
-    alert("You left the game and are out of bounds");
+    //alert("You left the game and are out of bounds");
     return time_end;
 }
 
@@ -136,6 +136,7 @@ function pickupItem(event) {
     var sandals = document.querySelectorAll(".sandals");
     //console.log(gem);
     if (gem.length != 0) {
+        console.log("remove gem");
         gem[0].classList.remove("gem");
         gem[0].classList.add("gemClick");
     } else if (key.length != 0) {

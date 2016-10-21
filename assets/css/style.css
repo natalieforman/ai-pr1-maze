@@ -8,12 +8,49 @@ h1 {
   color: #ab2345;
 }
 
-/* line 13, ../compass/sass/style.scss */
-#game {
-  width: 730px;
+/* line 11, ../compass/sass/style.scss */
+h3 {
+  font-family: "Roboto Slab", serif;
+  font-weight: bold;
 }
 
-/* line 16, ../compass/sass/style.scss */
+/* line 15, ../compass/sass/style.scss */
+#levels {
+  overflow: hidden;
+}
+/* line 17, ../compass/sass/style.scss */
+#levels .level {
+  float: left;
+  width: 200px;
+  font-size: 18px;
+  line-height: 45px;
+}
+/* line 23, ../compass/sass/style.scss */
+#levels .e_tile, #levels .m_tile {
+  border: none;
+}
+/* line 26, ../compass/sass/style.scss */
+#levels .e_tile.sword {
+  width: 45px;
+  height: 45px;
+  background-image: url(../images/sword_small.jpg);
+}
+/* line 31, ../compass/sass/style.scss */
+#levels .letter {
+  background-image: url(../images/message.jpg);
+}
+/* line 34, ../compass/sass/style.scss */
+#levels .unlock {
+  background-image: url(../images/key.jpg);
+}
+
+/* line 38, ../compass/sass/style.scss */
+#game {
+  width: 740px;
+  margin-bottom: 20px;
+}
+
+/* line 43, ../compass/sass/style.scss */
 .e_tile {
   width: 70px;
   height: 70px;
@@ -21,137 +58,144 @@ h1 {
   border: 2px solid #333;
   background-color: #eee;
 }
-/* line 23, ../compass/sass/style.scss */
+/* line 50, ../compass/sass/style.scss */
 .e_tile.wall {
   background-image: url(../images/e_wall.jpg);
   background-color: #ccc;
 }
-/* line 27, ../compass/sass/style.scss */
+/* line 54, ../compass/sass/style.scss */
 .e_tile.start {
   background-image: url(../images/start.jpg);
   background-color: #550b23;
   color: #fff;
 }
-/* line 32, ../compass/sass/style.scss */
+/* line 59, ../compass/sass/style.scss */
 .e_tile.finish {
   background-image: url(../images/door.jpg);
   background-color: #0b2255;
   color: #fff;
 }
-/* line 37, ../compass/sass/style.scss */
+/* line 64, ../compass/sass/style.scss */
 .e_tile.altar {
   /*Minotaur*/
   background-image: url(../images/minotaur.jpg);
   background-color: #0b2255;
   color: #fff;
 }
-/* line 43, ../compass/sass/style.scss */
+/* line 70, ../compass/sass/style.scss */
 .e_tile.gem {
   /*Sword*/
   background-image: url(../images/sword.jpg);
   background-color: #0b2255;
   color: #fff;
 }
-/* line 49, ../compass/sass/style.scss */
+/* line 76, ../compass/sass/style.scss */
 .e_tile.startMouse {
   background-image: url(../images/go.jpg);
   background-color: #bbd2f7;
 }
-/* line 53, ../compass/sass/style.scss */
+/* line 80, ../compass/sass/style.scss */
 .e_tile.gemClick {
   background-image: url(../images/sword_used.jpg);
   background-color: #ccc;
 }
-/* line 57, ../compass/sass/style.scss */
+/* line 84, ../compass/sass/style.scss */
 .e_tile.altarClick {
   background-image: url(../images/minotaur_dead.jpg);
   background-color: #ccc;
 }
-/* line 61, ../compass/sass/style.scss */
+/* line 88, ../compass/sass/style.scss */
 .e_tile.wallMouse {
   background-color: #ccc;
   background-image: url(../images/e_wall_bad.jpg);
 }
 
-/* line 66, ../compass/sass/style.scss */
+/* line 93, ../compass/sass/style.scss */
 .m_tile {
   width: 45px;
   height: 45px;
   float: left;
   border: 2px solid #333;
   background-color: #eee;
-  /*message*/
-  /*sandals*/
-  /*sky*/
-  /*Hermes?, Solider?*/
-  /*Hades*/
-  /*Key*/
-  /*wall*/
 }
-/* line 73, ../compass/sass/style.scss */
-.m_tile.wall {
-  background-image: url(../images/e_wall_small.jpg);
+/* line 100, ../compass/sass/style.scss */
+.m_tile.mountain {
+  background-image: url(../images/mountain.jpg);
   background-color: #ccc;
 }
-/* line 77, ../compass/sass/style.scss */
+/* line 104, ../compass/sass/style.scss */
+.m_tile.wall {
+  background-image: url(../images/fire.jpg);
+  background-color: #ccc;
+}
+/* line 108, ../compass/sass/style.scss */
 .m_tile.wallMouse {
   background-color: #ccc;
-  background-image: url(../images/e_wall_bad_small.jpg);
+  background-image: url(../images/fire_bad.jpg);
 }
-/* line 81, ../compass/sass/style.scss */
+/* line 112, ../compass/sass/style.scss */
 .m_tile.start {
   background-image: url(../images/start_small.jpg);
   background-color: #550b23;
   color: #fff;
 }
-/* line 86, ../compass/sass/style.scss */
+/* line 117, ../compass/sass/style.scss */
 .m_tile.finish {
+  background-image: url(../images/exit.jpg);
   background-color: #0b2255;
   color: #fff;
 }
-/* line 90, ../compass/sass/style.scss */
+/* line 122, ../compass/sass/style.scss */
 .m_tile.sky {
+  background-image: url(../images/sky.jpg);
   background-color: #8ecbf5;
 }
-/* line 93, ../compass/sass/style.scss */
+/* line 126, ../compass/sass/style.scss */
 .m_tile.message {
+  background-image: url(../images/message.jpg);
   background-color: #f58eef;
 }
-/* line 96, ../compass/sass/style.scss */
+/* line 130, ../compass/sass/style.scss */
 .m_tile.sandals {
+  background-image: url(../images/sandal.jpg);
   background-color: #333;
 }
-/* line 99, ../compass/sass/style.scss */
-.m_tile.hades {
-  background-image: url(../images/hades.jpg);
-  background-color: #333;
-}
-/* line 103, ../compass/sass/style.scss */
+/* line 134, ../compass/sass/style.scss */
 .m_tile.key {
   background-image: url(../images/key.jpg);
   background-color: #aaa;
 }
-/* line 107, ../compass/sass/style.scss */
+/* line 138, ../compass/sass/style.scss */
 .m_tile.startMouse {
   background-image: url(../images/go_small.jpg);
   background-color: #bbd2f7;
 }
-/* line 111, ../compass/sass/style.scss */
+/* line 142, ../compass/sass/style.scss */
 .m_tile.keyClick {
-  background-image: url(../images/start_small.jpg);
   background-color: #ccc;
+}
+/* line 145, ../compass/sass/style.scss */
+.m_tile.hadesClick {
+  background-image: url(../images/hades.jpg);
+  background-color: #aaa;
+}
+/* line 149, ../compass/sass/style.scss */
+.m_tile.badMountain {
+  background-image: url(../images/mountain_bad.jpg);
+  background-color: #ccc;
+}
+/* line 153, ../compass/sass/style.scss */
+.m_tile.sandalsClick, .m_tile.messageClick {
+  background-color: #aaa;
 }
 
 /*mouseover tiles*/
-/* line 125, ../compass/sass/style.scss */
+/* line 159, ../compass/sass/style.scss */
 .tileMouse {
   background-color: #c4edc6;
 }
 
-/* line 128, ../compass/sass/style.scss */
+/* line 162, ../compass/sass/style.scss */
 .tileLeave {
   background-color: green;
-}
-.hadesClick {
-  background-color: red;
 }

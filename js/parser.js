@@ -76,6 +76,14 @@ var openFile = function(event) {
                 var tile_object = new tiles(coor, "null", "message"); //creating the object
                 objects.push(tile_object);
             }
+            else if (newText[i] === ",mountain") {
+                counter++; //increment the counter
+                var j = i - 1; //subtracting 1 because the coordinate location in the array is before the gem
+                var coor = newText[j];
+                //console.log("sky cooridinates: "+coor);
+                var tile_object = new tiles(coor, "null", "mountain"); //creating the object
+                objects.push(tile_object);
+            }
              else if (newText[i] === ",shoes") {
                 counter++; //increment the counter
                 var j = i - 1; //subtracting 1 because the coordinate location in the array is before the gem
