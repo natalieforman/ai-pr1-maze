@@ -178,6 +178,7 @@ function play() {
     var sandals = document.querySelectorAll(".sandals");
     var key = document.querySelectorAll(".key");
     var finish = document.querySelectorAll(".finish");
+    var message =  document.querySelectorAll(".message");
     //all of the user mouse functions being called here
     start[0].onmouseover = startGame;
     start[0].onmouseleave = continueGame;
