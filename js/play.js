@@ -1,7 +1,10 @@
-var time_end,
-    time_start;
-//Calling this function when the user mouseovers any of the walls
+//Global variables for the booleans
+var bool = false;
+var wall_bool = false; //if true you loose
+
+//Calling this function when the user mouseovers any of the walls, if the user leaves the wall then I call the leaveWall function
 function lose(event) {
+    wall_bool = true;
     var wall = document.querySelectorAll(".wall");
     for (var i = 0; i < wall.length; i++) {
         wall[i].classList.remove("wall");
@@ -14,112 +17,63 @@ function lose(event) {
     }
 }
 
-//Calling this function when the user is not hovering over the walls
-function leaveWall(event) {
-    var tiles = document.getElementById("game").children;
-    var wall_array = [];
-    for (var i = 0; i < tiles.length; i++) {
-        if (tiles[i].className == "tile wallMouse") {
-            wall_array.push(tiles[i]);
-        }
-    }
-    for (var i = 0; i < wall_array.length; i++) {
-        wall_array[i].classList.remove("wallMouse");
-        wall_array[i].classList.add("wall");
-    }
-}
-
-//Calling this function when the user mouseovers the regular free tiles
-function walk(event) {
-    console.log("Walking");
-    var tile_array = [];
-    var tile = document.querySelectorAll(".tile");
-    for (var i = 0; i < tile.length; i++) {
-        if (tile[i].className == "tile ") {
-            tile_array.push(tile[i]);
-            console.log(tile[i]);
-        }
-    }
-    for (var i = 0; i < tile_array.length; i++) {
-        //check if mouse on current i
-        var x = event.clientX;
-        var y = event.clientY;
-        tile_array[i].classList.add("tileMouse");
-    }
-}
-
-function leaveTile(event) {
-    var tile_array = [];
-    var bool = true;
-    var tile = document.getElementById("game").children;
-    console.log(tile);
-    for (var i = 0; i < tile.length; i++) {
-        if (tile[i].className == "tile tileMouse") {
-            tile_array.push(tile[i]);
-        } else if (tile[i].className == "tile tileLeave") {
-            tile_array.push(tile[i]);
-            bool = false
-        }
-    }
-    for (var i = 0; i < tile_array.length; i++) {
-        if (bool === true) {
-            tile_array[i].classList.remove("tileMouse");
-            tile_array[i].classList.add("tileLeave");
-        } else {
-            tile_array[i].classList.remove("tileLeave");
-            tile_array[i].classList.add("tileMouse");
-        }
-    }
-}
-
 //calling this function when the user wins the game and makes it to the finish tile
 function win(event) {
-    time_end = new Date();
-    //alert("You Win");
-    return time_end;
+    alert("You Win");
+}
+
+//this function is called when the user finishes the game but went through a wall
+function winUnsuccessful(event) {
+    var gem = document.querySelectorAll(".gem");
+    var gemClick = document.querySelectorAll(".gemClick");
+    var sandalsClick = document.querySelectorAll(".sandalsClick");
+    var sandals = document.querySelectorAll(".sandals");
+    var hades = document.querySelectorAll(".hades");
+    var hadesClick = document.querySelectorAll(".hadesClick");
+    if (gem.length != 0 | gemClick.length != 0) {
+        alert("You aren't invisible and cannot walk through walls: Win Unsuccessful");
+    } else if (sandals.length != 0 | sandalsClick != 0) {
+        alert("You hit some mountains and experienced some bruises: Win Unsuccessful");
+    } else if (hades.length != 0 | hadesClick.length != 0) {
+        alert("You got badly burned by the flames: Win Unsuccessful");
+    }
+}
+
+//calling this when the user reaches the finish without first completing the task
+function winTask(event) {
+    alert("You need to finish the task before finishing the maze");
 }
 
 //Calling this function when the user leaves the game area
 function endGame(event) {
-    time_end = new Date();
+    console.log("out of bounds");
     //alert("You left the game and are out of bounds");
-    return time_end;
+}
+
+//this function is called when the user falls through the sky tiles without sandals or is killed by the minotour
+function diedGame(event) {
+    var gem = document.querySelectorAll(".gem");
+    var sandals = document.querySelectorAll(".sandals");
+    if (gem.length != 0) {
+        alert("The Evil Minotour has captured you");
+    } else if (sandals.length != 0) {
+        alert("You have can't fly and have died");
+    }
 }
 
 //Calling this function when the user first hovers over the start
 function startGame(event) {
-    //timer function begins
-    time_start = new Date();
     var start = document.querySelectorAll(".start");
-    var tile_array = [];
-    //console.log(start);
     start[0].classList.remove("start");
     start[0].classList.add("startMouse");
-    //if the user walks over a wall
     var wall = document.querySelectorAll(".wall");
     for (var i = 0; i < wall.length; i++) {
         wall[i].onmouseover = lose;
-        wall[i].onmouseleave = leaveWall;
     }
     var mountain = document.querySelectorAll(".mountain");
     for (var i = 0; i < mountain.length; i++) {
         mountain[i].onmouseover = lose;
-        mountain[i].onmouseleave = leaveWall;
     }
-    //if a user walks over a regular tile
-    var tile = document.querySelectorAll(".tile");
-    //console.log(tile);
-    for (var i = 0; i < tile.length; i++) {
-        if (tile[i].className == "tile ") {
-            //console.log(tile[i]);
-            tile_array.push(tile[i]);
-        }
-    }
-    for (var i = 0; i < tile_array.length; i++) {
-        tile_array[i].onmouseover = walk;
-        //  tile_array[i].onmouseleave = leaveTile;
-    }
-    return time_start;
 }
 
 //Calling this function when the user is not hovering over the start
@@ -129,109 +83,116 @@ function continueGame(event) {
     tiles[0].classList.add("start");
 }
 
-//This function will be called when the user picks up the item
+//This function will be called when the user picks up an item, once a user has picked up an item they can then complete the task
 function pickupItem(event) {
+    bool = true;
     var gem = document.querySelectorAll(".gem");
     var key = document.querySelectorAll(".key");
     var sandals = document.querySelectorAll(".sandals");
-    //console.log(gem);
+    var altar = document.querySelectorAll(".altar");
+    var message = document.querySelectorAll(".message");
+    var hades = document.querySelectorAll(".hades");
+    var finish = document.querySelectorAll(".finish");
     if (gem.length != 0) {
-        console.log("remove gem");
         gem[0].classList.remove("gem");
         gem[0].classList.add("gemClick");
     } else if (key.length != 0) {
         key[0].classList.remove("key");
         key[0].classList.add("keyClick");
-        console.log("dude you just clicked the magic key");
+        if (wall_bool === false) { //once the user gets the key they can win without ever seeing hades
+            finish[0].onmouseover = win;
+        } else if (wall_bool === true) {
+            finish[0].onmouseover = winUnsuccessful;
+        }
     } else if (sandals.length != 0) {
         sandals[0].classList.remove("sandals");
-        sandals[0].classList.add("sandalsClick");
-        console.log("dude you just got cool sandals");
+        sandals[0].classList.add("sandalsClick"); //once you have clicked on the sandals you can now click on the message
+        message[0].onclick = dropoffItem;
     }
 }
 
-//this function will be called when the user drops off an item
+//this function will be called when the user drops off an item, this function can only be reached once you pick up an item
 function dropoffItem(event) {
+    var finish = document.querySelectorAll(".finish");
     var altar = document.querySelectorAll(".altar");
-    var hades = document.querySelectorAll(".hades");
     var message = document.querySelectorAll(".message");
-    //console.log(altar);
-    if (hades.length != 0) {
-        hades[0].classList.remove("hades");
-        hades[0].classList.add("hadesClick");
-        console.log("you just met hades");
-    } else if (altar.length != 0) {
-        altar[0].classList.remove("altar");
-        altar[0].classList.add("altarClick");
+    if (altar.length != 0) {
+        if (bool === false) {
+            diedGame();
+        } else {
+            altar[0].classList.remove("altar");
+            altar[0].classList.add("altarClick");
+            //once you have killed the Minotour now you can win the game but only if you did not hit any walls
+            if (wall_bool === false) {
+                finish[0].onmouseover = win;
+            } else if (wall_bool === true) {
+                finish[0].onmouseover = winUnsuccessful;
+            }
+        }
     } else if (message.length != 0) {
         message[0].classList.remove("message");
         message[0].classList.add("messageClick");
+        if (wall_bool === false) {
+            finish[0].onmouseover = win;
+        } else if (wall_bool === true) {
+            finish[0].onmouseover = winUnsuccessful;
+        }
+    }
+}
+//this function is special to the sky tiles, because if the user touches the sky tiles without first getting the sandals they automatically die
+function skyTiles(event) {
+    if (bool === false) {
+        diedGame();
+    }
+}
+//This function is just for hades because hades can appear even if a key is not picked up, the other items must be picked up before they get dropped off
+function hadesAppears(event) {
+    var finish = document.querySelectorAll(".finish");
+    var hades = document.querySelectorAll(".hades");
+    if (hades.length != 0) {
+        if (bool === false) {
+            hades[0].classList.remove("hades");
+            hades[0].classList.add("hadesClick");
+            alert("Evil Hades has captured you");
+        } else if (bool === true) {
+            hades[0].classList.remove("hades");
+            hades[0].classList.add("hadesClick");
+            alert("You did not die from the evil hades");
+            if (wall_bool === false) {
+                finish[0].onmouseover = win;
+            } else if (wall_bool === true) {
+                finish[0].onmouseover = winUnsuccessful;
+            }
+        }
     }
 }
 
+//This function is the play function and it is being called in the parser.js file once the board is created
 function play() {
-    var tiles = document.getElementById("game").children;
-    //  console.log(tiles);
-    var tile = document.querySelectorAll(".tile");
-    console.log(tile);
-    for (var i = 0; i < tile.length; i++) {
-        if (tile[i].className == "tile ") {}
-    }
-    var wall = document.querySelectorAll(".wall");
     var gem = document.querySelectorAll(".gem");
     var altar = document.querySelectorAll(".altar");
     var start = document.querySelectorAll(".start");
-    var finish = document.querySelectorAll(".finish");
     var game = document.getElementById('game');
     var hades = document.querySelectorAll(".hades");
     var sky = document.querySelectorAll(".sky");
     var sandals = document.querySelectorAll(".sandals");
     var key = document.querySelectorAll(".key");
-    var mountain = document.querySelectorAll(".mountain");
-    var message = document.querySelectorAll(".message");
-
-    //console.log(tile);
-    //console.log(sky);
-    //console.log(hades);
-    //  console.log(key);
-    //console.log(start);
+    var finish = document.querySelectorAll(".finish");
     //all of the user mouse functions being called here
     start[0].onmouseover = startGame;
     start[0].onmouseleave = continueGame;
+    finish[0].onmouseover = winTask;
     game.onmouseleave = endGame;
-    finish[0].onmouseover = win;
-  // mailbox[0].onmouseover = win;
     if (gem.length != 0 && altar.length != 0) {
         gem[0].onclick = pickupItem;
-        altar[0].onclick = dropoffItem;
-    } else if (sky.length != 0 && sandals.length != 0) {
-        //sky[0].onclick = pickupItem;
+        altar[0].onmouseover = dropoffItem;
+    } else if (message.length != 0 && sandals.length != 0) {
         sandals[0].onclick = pickupItem;
-        message[0].onclick = dropoffItem;
-        console.log("sky sandals and message");
-
+        for (var i = 0; i < sky.length; i++) {
+            sky[i].onmouseover = skyTiles;
+        }
     } else if (hades.length != 0 && key.length != 0) {
-        hades[0].onmouseover = dropoffItem;
         key[0].onclick = pickupItem;
-        console.log("evil hades and a key");
+        hades[0].onmouseover = hadesAppears;
     }
 }
-
-//This function will be for the timer
-function timer(end, start) {
-    difference = (start - end);
-    days = Math.floor(difference / (60 * 60 * 1000 * 24) * 1);
-    years = Math.floor(days / 365);
-    if (years > 1) {
-        days = days - (years * 365)
-    }
-    hours = Math.floor((difference % (60 * 60 * 1000 * 24)) / (60 * 60 * 1000) * 1);
-    mins = Math.floor(((difference % (60 * 60 * 1000 * 24)) % (60 * 60 * 1000)) / (60 * 1000) * 1);
-    secs = Math.floor((((difference % (60 * 60 * 1000 * 24)) % (60 * 60 * 1000)) % (60 * 1000)) / 1000 * 1);
-    document.getElementById('years').innerHTML = years;
-    document.getElementById('days').innerHTML = days;
-    document.getElementById('hours').innerHTML = hours;
-    document.getElementById('minutes').innerHTML = mins;
-    document.getElementById('seconds').innerHTML = secs;
-}
-//timer(time_end, time_start);
