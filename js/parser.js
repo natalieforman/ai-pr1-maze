@@ -54,6 +54,8 @@ var showBoard = function(level) {
             var tile_object = new tiles(coor, "null", type); //creating the object
             objects.push(tile_object);
         }
+        /*Check each variable type*/
+        /*If it is that variable, declare the sprite*/
         for (var i = 0; i < newText.length; i++) {
             if (newText[i] === ",wall") {
                 setS(newText[i], newText[i-1]);
