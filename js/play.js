@@ -18,7 +18,8 @@ function lose(event) {
 
 //calling this function when the user wins the game and makes it to the finish tile
 function win(event) {
-    alert("You Win");
+  var output = document.getElementById("output");
+  output.innerHTML = "You Win";
 }
 
 //this function is called when the user finishes the game but went through a wall
@@ -48,12 +49,15 @@ function winUnsuccessful(event) {
 
 //calling this when the user reaches the finish without first completing the task
 function winTask(event) {
-    alert("You need to finish the task before finishing the maze");
+  var output = document.getElementById("output");
+  output.innerHTML = "You need to finish a task before completing the maze";
 }
 
 //Calling this function when the user leaves the game area
 function endGame(event) {
-    console.log("out of bounds");
+  var bounds = document.getElementById("bounds");
+  bounds.innerHTML = "You are out of bounds";
+  console.log("out of bounds");
     //alert("You left the game and are out of bounds");
 }
 
@@ -62,9 +66,13 @@ function diedGame(event) {
     var gem = document.querySelectorAll(".gem");
     var sandals = document.querySelectorAll(".sandals");
     if (gem.length != 0) {
-        alert("The Evil Minotour has captured you");
+      var output = document.getElementById("output");
+      output.innerHTML = "The evil minotour captured you";
     } else if (sandals.length != 0) {
-        alert("You have can't fly and have died");
+      console.log(sandals);
+      alert("no shoes");
+      var output = document.getElementById("output");
+      output.innerHTML = "Oh no!! You didn't pick up the shoes from Hermes and you can't fly";
     }
 }
 
