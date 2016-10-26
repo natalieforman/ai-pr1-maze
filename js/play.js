@@ -30,6 +30,8 @@ function winUnsuccessful(event) {
     var sandals = document.querySelectorAll(".sandals");
     var hades = document.querySelectorAll(".hades");
     var hadesClick = document.querySelectorAll(".hadesClick");
+    console.log(hadesClick);
+    console.log(hades);
     if (gem.length != 0 | gemClick.length != 0) {
         alert("You aren't invisible and cannot walk through walls: Win Unsuccessful");
     } else if (sandals.length != 0 | sandalsClick != 0) {
@@ -119,7 +121,7 @@ function dropoffItem(event) {
     if (altar.length != 0) {
         if (bool === false) {
             diedGame();
-        } else {
+        } else if(bool === true) {
             altar[0].classList.remove("altar");
             altar[0].classList.add("altarClick");
             //once you have killed the Minotour now you can win the game but only if you did not hit any walls
