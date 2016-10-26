@@ -27,6 +27,7 @@
     <script src="js/parser.js"></script>
     <script src="js/board.js"></script>
     <script src="js/play.js"></script>
+    <script src="js/input.js"></script>
 </head>
 <body>
     <!--[if lt IE 8]>
@@ -36,60 +37,26 @@
         <div class="row">
             <div class="col-sm-12">
                 <h1>Mount Olympus</h1>
-                <div id="levels">
                 <h3>Levels</h3>
-                <div class="e_tile sword"></div>
-                <p class="level"><b>Easy:</b> Minotaur</p>
+                <div class="row" id="levels">
+                <div class="col-sm-4">
+                  <div class="e_tile sword"></div>
+                  <p class="level"><b>Easy:</b> Minotaur</p>
+                  <input type="button" value="Level One" onclick="createLevel(easy1)">
+                  <input type="button" value="Level Two" onclick="createLevel(easy2)">
+                </div>
+                <div class="col-sm-4">
                 <div class="m_tile letter"></div>
                 <p class="level"><b>Medium:</b> Hermes</p>
+                <input type="button" value="Level Three" onclick="createLevel(medium1)">
+                  <input type="button" value="Level Four" onclick="createLevel(medium2)">
+              </div>
+              <div class="col-sm-4">
                 <div class="m_tile unlock"></div>
                 <p class="level"><b>Hard:</b> Hades</p>
+                <input type="button" value="Level Five" onclick="createLevel(hard1)">
+                  <input type="button" value="Level Six" onclick="createLevel(hard2)">
               </div>
-              <!--  <div class="dropdown">
-                  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Choose Level
-                  <span class="caret"></span></button>
-                  <ul class="dropdown-menu">
-                    <li><a href="#">Level 1</a></li>
-                    <li><a href="#">Level 2</a></li>
-                    <li><a href="#">Level 3</a></li>
-                  </ul>
-                </div>
-              http://bootsnipp.com/snippets/featured/multi-level-dropdown-menu-bs3
-            -->
-<!--                 <div class="dropdown">
-                  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Choose Level
-                    <span class="caret"></span></button>
-    		      <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
-              <li class="dropdown-submenu">
-                <a tabindex="-1" href="#">Easy</a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Easy 1</a></li>
-                  <li><a href="#">Easy 2</a></li>
-                  <li><a href="#">Easy 3</a></li>
-                </ul>
-              </li>
-              <li class="dropdown-submenu">
-                <a tabindex="-1" href="#">Medium</a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Medium 1</a></li>
-                  <li><a href="#">Medium 2</a></li>
-                  <li><a href="#">Medium 3</a></li>
-                </ul>
-              </li>
-              <li class="dropdown-submenu">
-                <a tabindex="-1" href="#">Hard</a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Hard 1</a></li>
-                  <li><a href="#">Hard 2</a></li>
-                  <li><a href="#">Hard 3</a></li>
-                </ul>
-              </li>
-            </ul>
-        </div> -->
-                <h3>Pick your maze</h3>
-                <input type="file" id="files" name="file" onchange='openFile(event)' />
-                <br>
-            </div>
         </div>
         <div class="row">
           <!-- this area will be for the timer-->

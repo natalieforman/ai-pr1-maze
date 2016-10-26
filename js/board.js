@@ -1,3 +1,8 @@
+var createBoard = function(total, sPos, fPos) {
+    createRectangles(total * total);
+    setEnds(total, sPos, fPos);
+}
+
 /*
 Create the tiles for the board
 @param {int} total - The total number of tiles
@@ -56,6 +61,29 @@ function setTile(width, tileObj){
 	var sNum = width*(coord[0]-1)+(coord[1]-1);
 	//select the tile by its ID
 	startTile = document.getElementById("tile_"+sNum);
+	startTile.className = "";
+	if (width == 10) {
+		startTile.className = "e_tile ";
+	}
+	//if the total is 15 wide then it is medium/hard
+	else if (width == 15){
+		startTile.className = "m_tile ";
+	}
 	//set the selected div's class to the sprite type
 	startTile.className += tileObj.sprite;
+}
+
+var findStart = function(x) {
+    var startLocation = x.indexOf(' start') + 1; //this is finding the position of where 'start' is
+    var finishLocation = x.indexOf(' finish') + 1; //this is finding the position of where 'finish' is
+    start = x[startLocation]; //this is the start coordinates
+    finish = x[finishLocation]; //this is the end coordinates
+    startEnd = [start, finish];
+    return startEnd;
+}
+var calcWidth = function(x) {
+    var width = x[1];
+    var size = width.split(",");
+    var gridwidth = size[1]; //this is the width of the grid
+    return gridwidth; //now we know the width of the grid and assuming that it will always be a square we know that the height is also the same as the width
 }
