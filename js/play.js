@@ -30,8 +30,8 @@ function winUnsuccessful(event) {
     var sandals = document.querySelectorAll(".sandals");
     var hades = document.querySelectorAll(".hades");
     var hadesClick = document.querySelectorAll(".hadesClick");
-    console.log(hadesClick);
-    console.log(hades);
+    //console.log(hadesClick);
+    //console.log(hades);
     if (gem.length != 0 | gemClick.length != 0) {
         var output = document.getElementById("output");
         output.innerHTML = "You aren't invisible and cannot walk through walls: Win Unsuccessful";
@@ -137,6 +137,8 @@ function dropoffItem(event) {
         } else if(bool === true) {
             altar[0].classList.remove("altar");
             altar[0].classList.add("altarClick");
+            var output = document.getElementById("output");
+            output.innerHTML = "You have successfully killed the evil Minotour";
             //once you have killed the Minotour now you can win the game but only if you did not hit any walls
             if (wall_bool === false) {
                 finish[0].onmouseover = win;
