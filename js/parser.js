@@ -143,5 +143,5 @@ var printGrid = function(x) {
 }
 var createBoard = function(total, sPos, fPos) {
     createRectangles(total * total);
-    setSprite(total, sPos, fPos);
+    setEnds(total, sPos, fPos);
 }
