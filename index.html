@@ -39,34 +39,27 @@
                 <h1>Mount Olympus</h1>
                 <h3>Levels</h3>
                 <div class="row" id="levels">
-                <div class="col-sm-4">
-                  <div class="e_tile sword"></div>
-                  <p class="level"><b>Easy:</b> Minotaur</p>
-                  <input type="button" value="Level One" onclick="createLevel(easy1)">
-                  <input type="button" value="Level Two" onclick="createLevel(easy2)">
+                  <div class="col-sm-4">
+                    <div class="e_tile sword"></div>
+                    <p class="level"><b>Easy:</b> Minotaur</p>
+                    <input type="button" value="Level One" onclick="createLevel(easy1)">
+                    <input type="button" value="Level Two" onclick="createLevel(easy2)">
+                  </div>
+                  <div class="col-sm-4">
+                  <div class="m_tile letter"></div>
+                  <p class="level"><b>Medium:</b> Hermes</p>
+                  <input type="button" value="Level Three" onclick="createLevel(medium1)">
+                    <input type="button" value="Level Four" onclick="createLevel(medium2)">
                 </div>
                 <div class="col-sm-4">
-                <div class="m_tile letter"></div>
-                <p class="level"><b>Medium:</b> Hermes</p>
-                <input type="button" value="Level Three" onclick="createLevel(medium1)">
-                  <input type="button" value="Level Four" onclick="createLevel(medium2)">
-              </div>
-              <div class="col-sm-4">
-                <div class="m_tile unlock"></div>
-                <p class="level"><b>Hard:</b> Hades</p>
-                <input type="button" value="Level Five" onclick="createLevel(hard1)">
-                  <input type="button" value="Level Six" onclick="createLevel(hard2)">
-              </div>
-        </div>
-        <div class="row">
-          <!-- this area will be for the timer-->
-            <div id="timer" class="col-sm-12">
-              <div id="years"></div>
-              <div id="days"></div>
-              <div id="hours"></div>
-              <div id="minutes"></div>
-              <div id="seconds"></div>
+                  <div class="m_tile unlock"></div>
+                  <p class="level"><b>Hard:</b> Hades</p>
+                    <input type="button" value="Level Five" onclick="createLevel(hard1)">
+                    <input type="button" value="Level Six" onclick="createLevel(hard2)">
+                </div>
             </div>
+          </div>
+          <div id="output"></div>
         </div>
         <!--Creating the game space here -->
         <div class="row">

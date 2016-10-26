@@ -1,7 +1,6 @@
 //Global variables for the booleans
 var bool = false;
 var wall_bool = false; //if true you loose
-
 //Calling this function when the user mouseovers any of the walls, if the user leaves the wall then I call the leaveWall function
 function lose(event) {
     wall_bool = true;
@@ -33,11 +32,17 @@ function winUnsuccessful(event) {
     console.log(hadesClick);
     console.log(hades);
     if (gem.length != 0 | gemClick.length != 0) {
-        alert("You aren't invisible and cannot walk through walls: Win Unsuccessful");
+        var output = document.getElementById("output");
+        output.innerHTML = "You aren't invisible and cannot walk through walls: Win Unsuccessful";
+      //  alert("You aren't invisible and cannot walk through walls: Win Unsuccessful");
     } else if (sandals.length != 0 | sandalsClick != 0) {
-        alert("You hit some mountains and experienced some bruises: Win Unsuccessful");
+        var output = document.getElementById("output");
+        output.innerHTML ="You hit some mountains and experienced some bruises: Win Unsuccessful";
+        //alert("You hit some mountains and experienced some bruises: Win Unsuccessful");
     } else if (hades.length != 0 | hadesClick.length != 0) {
-        alert("You got badly burned by the flames: Win Unsuccessful");
+        //alert("You got badly burned by the flames: Win Unsuccessful");
+        var output = document.getElementById("output");
+        output.innerHTML = "You got badly burned by the flames: Win Unsuccessful";
     }
 }
 
@@ -171,6 +176,12 @@ function hadesAppears(event) {
 
 //This function is the play function and it is being called in the parser.js file once the board is created
 function play() {
+    var output = document.getElementById("output");
+    var text = document.getElementById("output").innerHTML;
+    if(text.length != 0){
+      var output = document.getElementById("output");
+      output.innerHTML = ""; //clearing the text in the output when the user switches levels
+    }
     var gem = document.querySelectorAll(".gem");
     var altar = document.querySelectorAll(".altar");
     var start = document.querySelectorAll(".start");
