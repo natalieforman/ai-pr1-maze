@@ -248,10 +248,10 @@ h3.navigate a:hover {
 
 /* line 205, ../compass/sass/style.scss */
 #output {
-  height: 50px;
-  width: 300px;
+  height: 70px;
   background-color: #ccc;
   margin-bottom: 5px;
+  padding: 5px;
 }
 
 /* line 211, ../compass/sass/style.scss */
@@ -265,4 +265,10 @@ input[type=button] {
 input[type=button]:hover {
   background-color: #333;
   color: #fff;
+}
+
+/* line 220, ../compass/sass/style.scss */
+#lvl-desc {
+  font-size: 12px;
+  margin-bottom: 5px;
 }

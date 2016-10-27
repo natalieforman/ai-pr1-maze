@@ -53,11 +53,11 @@ function winUnsuccessful(event) {
     if (gem.length != 0 | gemClick.length != 0) {
         var output = document.getElementById("output");
         output.innerHTML = "You aren't invisible and cannot walk through walls: Win Unsuccessful";
-    } else if (sandals.length != 0 | sandalsClick != 0) {
+    } else if (sandals.length != 0 | sandalsClick.length != 0) {
         var output = document.getElementById("output");
         output.innerHTML ="You hit some mountains and experienced some bruises: Win Unsuccessful";
-      //  console.log("hi", sandals.length);
-      //  console.log(sandalsClick)
+        console.log("hi", sandals.length);
+        console.log(sandalsClick)
     } else if (hades.length != 0 | hadesClick.length != 0) {
       console.log("hadesClick");
         var output = document.getElementById("output");

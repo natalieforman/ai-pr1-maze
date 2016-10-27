@@ -106,6 +106,15 @@ var createLevel = function(level){;
     objects = [];
     //reset the game playing div
     document.getElementById("game").innerHTML = "";
+
+    //describe the level
+    if (level == easy1 | level == easy2){
+    	document.getElementById("lvl-desc").innerHTML = "The player is trapped in a labyrinth with the deadly minotaur. The player must get the sword, slay the minotaur, and exit the labyrinth. The sword and the minotaur are both accessible. You can only confront the minotaur when you have the sword, if you try before that you will lose.";
+    } else if (level == medium1){
+    	document.getElementById("lvl-desc").innerHTML = "The player is Hermes, messenger of the gods.  Of course, Hermes needs his winged sandals to travel, which he has lost! The player must find their winged sandals and then use them to traverse over “sky” tiles to retrieve an important message and then reach the exit. The player will have to use the sandals to reach the exit but may or may not need them to get the message. The player cannot finish the maze without the message.  If the player tries to go over a sky tile without their sandals, they lose.";
+    } else if (level == hard1 | level == hard2){
+    	document.getElementById("lvl-desc").innerHTML = "You are an adventurer who has been trapped in the underworld and is trying to escape. Hades has caught wind of this and has donned his cap of invisibility to try to stop you. You must retrieve the magical key to the underworld and then use it to unlock the exit and then proceed to the exit without getting caught by Hades who will be invisible to you. If the player runs into Hades or tries to escape the underworld before unlocking the exit, they will lose.";
+    }
     //create the level
     showBoard(level);
 };
