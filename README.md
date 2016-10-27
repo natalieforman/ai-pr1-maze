@@ -3,7 +3,7 @@ Logical maze visualization for Artificial Intelligence
 
 ###Description
 A visualization for three ASP generated mazes.
-Uses Javascript, HTML and CSS to create the maze and let the user try to solve the levels.
+Uses Javascript, HTML and CSS to visualize the maze and event handlers to let the user try and solve the levels.
 
 ### Group Members
 Makaila - Coordinator
@@ -21,6 +21,6 @@ Note: The easy and hard levels can also be ran by just entering "clingo (insert 
 
 
 ### Running the project
-The project is an web based visualization.
-You can clone the project and just open the index file to view.
-To view newly generated mazes you will need to take the output and input it into a new variable in the parser.js file and create a button to access it in the index.html file.
+The project is a web based visualization.
+You can clone the project and open the index file to view.
+To add generated mazes to the site you need to take the output and create a new variable in the parser.js file. Then create a button to call the new level in the index.html file.

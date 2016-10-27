@@ -37,10 +37,12 @@
             <div class="col-sm-12 header">
                 <h1>Mount Olympus</h1>
                 <div id="nav-b">
-                <h3 class="navigate"><a class="here" href="index.html">Levels</a></h3>
-                <h3 class="navigate"><a href="report.html">Report</a></h3>
+                    <h3 class="navigate"><a class="here" href="index.html">Levels</a></h3>
+                    <h3 class="navigate"><a href="report.html">Report</a></h3>
+                </div>
             </div>
-            </div>
+        </div>
+        <div class="row">
             <div class="col-sm-12">
                 <div class="row" id="levels">
                     <div class="col-sm-4">
@@ -53,20 +55,21 @@
                       <div class="m_tile letter"></div>
                       <p class="level"><b>Medium:</b> Hermes</p>
                       <input type="button" value="Level Three" onclick="createLevel(medium1)">
-                        <input type="button" value="Level Four" onclick="createLevel(medium2)">
                     </div>
                     <div class="col-sm-4">
                       <div class="m_tile unlock"></div>
                       <p class="level"><b>Hard:</b> Hades</p>
-                        <input type="button" value="Level Five" onclick="createLevel(hard1)">
-                        <input type="button" value="Level Six" onclick="createLevel(hard2)">
+                        <input type="button" value="Level Four" onclick="createLevel(hard1)">
+                        <input type="button" value="Level Five" onclick="createLevel(hard2)">
                     </div>
                 </div>
             </div>
-        <div class="col-sm-12">
-            <h4>Game Output</h4>
-            <div id="output"></div>
-            <div id="bounds"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <h4>Game Output</h4>
+                <div id="output"></div>
+                <div id="bounds"></div>
             </div>
         </div>
         <!--Creating the game space here -->
