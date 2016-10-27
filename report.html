@@ -1,0 +1,92 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Mount Olympus</title>
+    <meta name="description" content="A maze generated with answer set programming">
+    <meta name="keywords" content="ASP, Maze, AI, Artificial Intelligence, Answer Set Programming">
+    <meta name="author" content="Makaila Akahoshi, Natalie Forman, Matthew Hendrickson">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--Bootstrap -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- JQuery -->
+    <script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+    <script src="js/parser.js"></script>
+    <script src="js/board.js"></script>
+    <script src="js/play.js"></script>
+</head>
+<body>
+    <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 header">
+                <h1>Mount Olympus</h1>
+                <div id="nav-b">
+                    <h3 class="navigate"><a href="index.html">Levels</a></h3>
+                    <h3 class="navigate"><a class="here" href="report.html">Report</a></h3>
+                </div>
+            </div>
+        </div>
+        <div class="row report">
+            <div class="col-sm-8 col-sm-offset-1">
+                <h3>Project 1: ASP & Javascript Maze</h3>
+                    <h3>CSC-568, Fall 2016</h3>
+                    <h4>Group Members and Their Roles</h4>
+                    <p>Makaila Akahoshi [coordinator] - In charge of logistics, coordination and communication with group and professor. The coordinator is also responsible for assembling an implementation plan and the project report.</p>
+                    <p>Matt Henrickson [implementer] - Responsible for the technical implementation of the project and demonstrating the efficacy of the implementation.</p>
+                    <p>Natalie Forman [documentor] - Assembles the in-code documentation, external documentation, website, the description of solution in the project report</p>
+                    <h4>Overview</h4>
+                    <p>We will be creating an ASP generated maze that is visualized using Javascript. First we will develop the rules and constraints for the solvable mazes in our proposed Greek mythology universe. Next we will develop a front-end interface to visualize the generated maze (a reach goal will be to make it playable). Our maze will be different than the one in the PCG book in that we hope to further expand their example maze to create different levels of difficulty to allow the user to play different mazes. Rather than just having one requirement to solve the maze we hope to make it multi-stepped with constraints also on the maze configuration.</p>
+                    <p>We propose to develop three different mazes using answer set programming.  Once we have our logic completed we will be using HTML, CSS, and Javascript to create a website displaying the mazes.  For the constraints of our mazes we plan on making each maze a different mythological story.  We will be creating our mazes so that each maze is solvable, complex, and requires a minimum of one task be completed before the user can exit the maze.</p>
+                    <h4>Design and Technical Approach</h4>       
+                    <h5>ASP</h5>
+                    <p>We will be using clingo as our solver to execute our ASP logic.  We will make three levels, one easy, one medium, and one hard.  The logic and constraints will be slightly different for each.</p>
+                    <p><b>Easy:</b> The player is trapped in a labyrinth with the deadly minotaur.  The player must get the sword, slay the minotaur, and exit the labyrinth.  The size of the maze will be 10x10.  The player will always spawn at (1,1) and the exit will always spawn at (10,10).  The sword and the minotaur will both be accessible.  You will only be able to confront the minotaur when you have the sword, if you try before that you will lose.</p>
+                    <p><b>Medium:</b> The player is Hermes, messenger of the gods.  Of course, Hermes needs his winged sandals to travel, which he has lost!  The player must find their winged sandals and then use them to traverse over “sky” tiles to retrieve an important message and then reach the exit.  The size of the maze will be 15x15.  The player will always spawn at (1,1) and the exit will always spawn at (15,15).  The player will have to use the sandals to reach the exit but may or may not need them to get the message.  The player cannot finish the maze without the message.  If the player tries to go over a sky tile without their sandals, they lose.</p>
+                    <p><b>Hard:</b> You are an adventurer who has been trapped in the underworld and is trying to escape.  Hades has caught wind of this and has donned his cap of invisibility to try to stop you.  You must retrieve the magical key to the underworld and then use it to unlock the exit and then proceed to the exit without getting caught by Hades who will be invisible to you.  The size of the maze will be 15x15.  The player will always spawn at (1,1) and the exit will always spawn at (15,15).  If the player runs into Hades or tries to escape the underworld before unlocking the exit, they will lose.</p>
+                    <h5>Visualization</h5>
+                    <p>For the visualization of the mazes we plan on exporting the output we receive from clingo and importing it as a text file into our Website which will be written in HTML, CSS, and  Javascript code.  To toggle between the different mazes we will be having a dropdown button or checkboxes so that the user can choose which level they want to view.  Based on that user input we plan on displaying the corresponding maze.  For the Javascript portion of this project we plan on parsing through the text file and assign colors to the divs on the page which will serve as our canvas.  The overall themes of our website will be based on Greek Mythology and the obstacles and tasks that are generated in our mazes will reflect Greek Mythology.</p>
+                    <p>As an additional bonus we hope to make our mazes playable by adding javascript event handlers.  Based on the position of the cursor it will determine the users place on the maze.  We also hope to add a timer into our webpage that will start once the user is hovering over the start of the maze. </p> 
+                    <h4>Documentation and Access</h4>
+                    <p>We will be sharing code through a GitHub repository. There will be detailed readme file with what our project is and how the implementation works. In the implementation of our project we plan on each making commits and detailed comments of the code so that each member knows what changes have been made.</p> 
+                    <h4>Evaluation</h4>
+                    <p>To determine whether our mazes are solvable, complex, and logically correct we will be using our Javascript visualization to verify that the mazes perform like our english logic.  From the visualization we will be able to see whether a task object is being blocked by walls or whether the end of the maze is reachable by the user or not.  The visualization will also serve as a way to compare the difficulty of the levels.  To test whether our mazes are difficult enough we will be comparing the time it takes to generate the mazes.</p>
+                    <h4> Plan for Deliverables</h4>
+                    <h4>Checkpoint Report</h4>
+                    <p>For the checkpoint, we will have a basic website completed with most of the answer set programming done.  We will also have a basic pseudo code of the visualization completed.</p>
+                    <h4>Final Report and Project</h4>
+                    <p>We will have a complete visualization website done as well as the three different mythological levels’ logic done. The report will show how we developed each level and the process for visualization. It will also depict how far we were able to get with integrating the JavaScript with the ASP and implementing user interaction. The evaluation will also be complete and our techniques explained.</p>
+                    <h4>Separation of Tasks for Team</h4>
+                    <p>Coordinator: Makaila Akahoshi</p>
+                    <p>Implementor: Matt Hendrickson</p>
+                    <p>Documentor: Natalie Forman</p>
+                    <ul>
+                        <li>Setup and maintain github repo: Natalie</li>
+                        <li>Define the constraints of the maze: Matt</li>
+                        <li>Javascript Visualization: Makaila, Natalie, Matt</li>
+                        <li>ASP Coding: Matt, Natalie, Makaila</li>
+                        <li>Project Report: Makaila</li>
+                        <li>Inline Documentation: Natalie</li>
+                        <li>Website: Natalie, Makaila</li>
+                    </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
