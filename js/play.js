@@ -56,7 +56,7 @@ function winTask(event) {
 //Calling this function when the user leaves the game area
 function endGame(event) {
   var bounds = document.getElementById("bounds");
-  bounds.innerHTML = "You are out of bounds";
+  output.innerHTML = "You are out of bounds";
   console.log("out of bounds");
     //alert("You left the game and are out of bounds");
 }

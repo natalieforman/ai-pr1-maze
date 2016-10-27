@@ -189,13 +189,10 @@ h3 {
   background-color: #aaa;
 }
 
-/*mouseover tiles*/
-/* line 159, ../compass/sass/style.scss */
-.tileMouse {
-  background-color: #c4edc6;
-}
-
-/* line 162, ../compass/sass/style.scss */
-.tileLeave {
-  background-color: green;
+/* line 157, ../compass/sass/style.scss */
+#output {
+  height: 50px;
+  width: 300px;
+  background-color: #ccc;
+  margin-bottom: 5px;
 }
