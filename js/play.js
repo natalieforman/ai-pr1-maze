@@ -20,6 +20,7 @@ function lose(event) {
 function win(event) {
   var output = document.getElementById("output");
   output.innerHTML = "You Win";
+  alert("You Win");
 }
 
 //this function is called when the user finishes the game but went through a wall
@@ -30,8 +31,6 @@ function winUnsuccessful(event) {
     var sandals = document.querySelectorAll(".sandals");
     var hades = document.querySelectorAll(".hades");
     var hadesClick = document.querySelectorAll(".hadesClick");
-    //console.log(hadesClick);
-    //console.log(hades);
     if (gem.length != 0 | gemClick.length != 0) {
         var output = document.getElementById("output");
         output.innerHTML = "You aren't invisible and cannot walk through walls: Win Unsuccessful";
@@ -69,8 +68,6 @@ function diedGame(event) {
       var output = document.getElementById("output");
       output.innerHTML = "The evil minotour captured you";
     } else if (sandals.length != 0) {
-      console.log(sandals);
-      alert("no shoes");
       var output = document.getElementById("output");
       output.innerHTML = "Oh no!! You didn't pick up the shoes from Hermes and you can't fly";
     }
@@ -79,8 +76,18 @@ function diedGame(event) {
 //Calling this function when the user first hovers over the start
 function startGame(event) {
     var start = document.querySelectorAll(".start");
+    var gem = document.querySelectorAll(".gem");
+    var altar = document.querySelectorAll(".altar");
+    var hades = document.querySelectorAll(".hades");
+    var sky = document.querySelectorAll(".sky");
+    var sandals = document.querySelectorAll(".sandals");
+    var key = document.querySelectorAll(".key");
+    var message =  document.querySelectorAll(".message");
+    var finish = document.querySelectorAll(".finish");
     start[0].classList.remove("start");
     start[0].classList.add("startMouse");
+    finish[0].onmouseover = winTask;
+    game.onmouseleave = endGame;
     var wall = document.querySelectorAll(".wall");
     for (var i = 0; i < wall.length; i++) {
         wall[i].onmouseover = lose;
@@ -88,6 +95,18 @@ function startGame(event) {
     var mountain = document.querySelectorAll(".mountain");
     for (var i = 0; i < mountain.length; i++) {
         mountain[i].onmouseover = lose;
+    }
+    if (gem.length != 0 && altar.length != 0) {
+        gem[0].onclick = pickupItem;
+        altar[0].onmouseover = dropoffItem;
+    } else if (message.length != 0 && sandals.length != 0) {
+        sandals[0].onclick = pickupItem;
+        for (var i = 0; i < sky.length; i++) {
+            sky[i].onmouseover = skyTiles;
+        }
+    } else if (hades.length != 0 && key.length != 0) {
+        key[0].onclick = pickupItem;
+        hades[0].onmouseover = hadesAppears;
     }
 }
 
@@ -170,11 +189,16 @@ function hadesAppears(event) {
         if (bool === false) {
             hades[0].classList.remove("hades");
             hades[0].classList.add("hadesClick");
-            alert("Evil Hades has captured you");
+            //alert("Evil Hades has captured you");
+            var output = document.getElementById("output");
+            output.innerHTML = "Oh No!! You were captured by the Evil Hades";
+          }
         } else if (bool === true) {
             hades[0].classList.remove("hades");
             hades[0].classList.add("hadesClick");
-            alert("You did not die from the evil hades");
+            //alert("You did not die from the evil hades");
+            var output = document.getElementById("output");
+            output.innerHTML = "You gave Hades the key and he spared your life";
             if (wall_bool === false) {
                 finish[0].onmouseover = win;
             } else if (wall_bool === true) {
@@ -182,7 +206,6 @@ function hadesAppears(event) {
             }
         }
     }
-}
 
 //This function is the play function and it is being called in the parser.js file once the board is created
 function play() {
@@ -192,31 +215,13 @@ function play() {
       var output = document.getElementById("output");
       output.innerHTML = ""; //clearing the text in the output when the user switches levels
     }
-    var gem = document.querySelectorAll(".gem");
-    var altar = document.querySelectorAll(".altar");
+    var bounds = document.getElementById("bounds");
+    var textBounds = document.getElementById("bounds").innerHTML;
+    if(textBounds.length != 0){
+      var bounds = document.getElementById("bounds");
+      bounds.innerHTML = ""; //clearing the text in the out of bounds when the user switches levels
+    }
     var start = document.querySelectorAll(".start");
-    var game = document.getElementById('game');
-    var hades = document.querySelectorAll(".hades");
-    var sky = document.querySelectorAll(".sky");
-    var sandals = document.querySelectorAll(".sandals");
-    var key = document.querySelectorAll(".key");
-    var finish = document.querySelectorAll(".finish");
-    var message =  document.querySelectorAll(".message");
-    //all of the user mouse functions being called here
     start[0].onmouseover = startGame;
     start[0].onmouseleave = continueGame;
-    finish[0].onmouseover = winTask;
-    game.onmouseleave = endGame;
-    if (gem.length != 0 && altar.length != 0) {
-        gem[0].onclick = pickupItem;
-        altar[0].onmouseover = dropoffItem;
-    } else if (message.length != 0 && sandals.length != 0) {
-        sandals[0].onclick = pickupItem;
-        for (var i = 0; i < sky.length; i++) {
-            sky[i].onmouseover = skyTiles;
-        }
-    } else if (hades.length != 0 && key.length != 0) {
-        key[0].onclick = pickupItem;
-        hades[0].onmouseover = hadesAppears;
-    }
 }
