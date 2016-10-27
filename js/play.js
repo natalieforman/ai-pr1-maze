@@ -1,14 +1,21 @@
 //Global variables for the booleans
 var bool = false;
 var wall_bool = false; //if true you loose
-//Calling this function when the user mouseovers any of the walls, if the user leaves the wall then I call the leaveWall function
+
+/*
+Called when the user mouseovers any wall 
+@param {event} event - The wall, mountaisn or flames have been touched
+ */
 function lose(event) {
+    //wall is wall and flames
     wall_bool = true;
     var wall = document.querySelectorAll(".wall");
+    //since touched, display different image
     for (var i = 0; i < wall.length; i++) {
         wall[i].classList.remove("wall");
         wall[i].classList.add("wallMouse");
     }
+    //since touched, display different image
     var mountain = document.querySelectorAll(".mountain");
     for (var i = 0; i < mountain.length; i++) {
         mountain[i].classList.remove("mountain");
@@ -16,52 +23,69 @@ function lose(event) {
     }
 }
 
-//calling this function when the user wins the game and makes it to the finish tile
+/*
+Called when the user touches the finish successfully
+@param {event} event - The finish has been touched
+ */
 function win(event) {
   var output = document.getElementById("output");
   output.innerHTML = "You Win";
 }
 
-//this function is called when the user finishes the game but went through a wall
+/*
+Called when the user finishes but touched a wall on the way
+@param {event} event - Finish touched
+ */
 function winUnsuccessful(event) {
+    //check if the sword has been used
     var gem = document.querySelectorAll(".gem");
+    //check that the sword was picked up?
     var gemClick = document.querySelectorAll(".gemClick");
+    //
     var sandalsClick = document.querySelectorAll(".sandalsClick");
+    //check if the sandals have been picked up
     var sandals = document.querySelectorAll(".sandals");
+    //check if hades was found
     var hades = document.querySelectorAll(".hades");
+    //
     var hadesClick = document.querySelectorAll(".hadesClick");
-    //console.log(hadesClick);
-    //console.log(hades);
     if (gem.length != 0 | gemClick.length != 0) {
         var output = document.getElementById("output");
         output.innerHTML = "You aren't invisible and cannot walk through walls: Win Unsuccessful";
-      //  alert("You aren't invisible and cannot walk through walls: Win Unsuccessful");
     } else if (sandals.length != 0 | sandalsClick != 0) {
         var output = document.getElementById("output");
         output.innerHTML ="You hit some mountains and experienced some bruises: Win Unsuccessful";
-        //alert("You hit some mountains and experienced some bruises: Win Unsuccessful");
+        console.log("hi", sandals.length);
+        console.log(sandalsClick)
     } else if (hades.length != 0 | hadesClick.length != 0) {
-        //alert("You got badly burned by the flames: Win Unsuccessful");
         var output = document.getElementById("output");
         output.innerHTML = "You got badly burned by the flames: Win Unsuccessful";
     }
 }
 
-//calling this when the user reaches the finish without first completing the task
+/*
+Called when the user mouseovers finish but hasn't finished a task
+@param {event} event - The finish has been touched
+ */
 function winTask(event) {
   var output = document.getElementById("output");
   output.innerHTML = "You need to finish a task before completing the maze";
 }
 
-//Calling this function when the user leaves the game area
+/*
+Called when the user leaves he game area
+@param {event} event - The cursor left the game div
+ */
 function endGame(event) {
-  var bounds = document.getElementById("bounds");
+  var output = document.getElementById("output");
   output.innerHTML = "You are out of bounds";
   console.log("out of bounds");
-    //alert("You left the game and are out of bounds");
 }
 
-//this function is called when the user falls through the sky tiles without sandals or is killed by the minotour
+/*
+Called when the user touches sky without sandals or the minotaur without the sword
+@param {event} event - The sky or minotaur has been touched
+ */
 function diedGame(event) {
     var gem = document.querySelectorAll(".gem");
     var sandals = document.querySelectorAll(".sandals");
@@ -70,13 +94,15 @@ function diedGame(event) {
       output.innerHTML = "The evil minotour captured you";
     } else if (sandals.length != 0) {
       console.log(sandals);
-      alert("no shoes");
       var output = document.getElementById("output");
       output.innerHTML = "Oh no!! You didn't pick up the shoes from Hermes and you can't fly";
     }
 }
 
-//Calling this function when the user first hovers over the start
+/*
+Begins the game by hovering over start
+@param {event} event - Start has been touched
+ */
 function startGame(event) {
     var start = document.querySelectorAll(".start");
     start[0].classList.remove("start");
@@ -91,14 +117,20 @@ function startGame(event) {
     }
 }
 
-//Calling this function when the user is not hovering over the start
+/*
+Called when the user has moused over start and is now playing
+@param {event} event - Moved away from start
+ */
 function continueGame(event) {
     var tiles = document.getElementById("game").children;
     tiles[0].classList.remove("startMouse");
     tiles[0].classList.add("start");
 }
 
-//This function will be called when the user picks up an item, once a user has picked up an item they can then complete the task
+/*
+Called when the user picks up an item, once a user has picked up an item they can then complete the task
+@param {event} event - Item clicked on
+ */
 function pickupItem(event) {
     bool = true;
     var gem = document.querySelectorAll(".gem");
@@ -126,7 +158,10 @@ function pickupItem(event) {
     }
 }
 
-//this function will be called when the user drops off an item, this function can only be reached once you pick up an item
+/*
+this function will be called when the user kills the Minotaur or clicks the message
+@param {event} event - The Minotaur or message is successfully clicked on
+ */
 function dropoffItem(event) {
     var finish = document.querySelectorAll(".finish");
     var altar = document.querySelectorAll(".altar");
@@ -156,13 +191,21 @@ function dropoffItem(event) {
         }
     }
 }
-//this function is special to the sky tiles, because if the user touches the sky tiles without first getting the sandals they automatically die
+
+/*
+special to the sky tiles, because if the user touches the sky tiles without first getting the sandals they automatically die
+@param {event} event - Sky tile touched
+ */
 function skyTiles(event) {
     if (bool === false) {
         diedGame();
     }
 }
-//This function is just for hades because hades can appear even if a key is not picked up, the other items must be picked up before they get dropped off
+
+/*
+For hades because hades can appear even if a key is not picked up, the other items must be picked up before they get dropped off
+@param {event} event - Hades touched
+ */
 function hadesAppears(event) {
     var finish = document.querySelectorAll(".finish");
     var hades = document.querySelectorAll(".hades");
@@ -170,11 +213,13 @@ function hadesAppears(event) {
         if (bool === false) {
             hades[0].classList.remove("hades");
             hades[0].classList.add("hadesClick");
-            alert("Evil Hades has captured you");
+            var output = document.getElementById("output");
+            output.innerHTML = "Evil Hades has captured you";
         } else if (bool === true) {
             hades[0].classList.remove("hades");
             hades[0].classList.add("hadesClick");
-            alert("You did not die from the evil hades");
+            var output = document.getElementById("output");
+            output.innerHTML = "You did not die from the evil hades";
             if (wall_bool === false) {
                 finish[0].onmouseover = win;
             } else if (wall_bool === true) {
@@ -184,14 +229,19 @@ function hadesAppears(event) {
     }
 }
 
-//This function is the play function and it is being called in the parser.js file once the board is created
+/*
+Play function and it is being called in the parser.js file once the board is create
+ */
 function play() {
     var output = document.getElementById("output");
     var text = document.getElementById("output").innerHTML;
+    
     if(text.length != 0){
       var output = document.getElementById("output");
       output.innerHTML = ""; //clearing the text in the output when the user switches levels
     }
+
+    //all of the variables
     var gem = document.querySelectorAll(".gem");
     var altar = document.querySelectorAll(".altar");
     var start = document.querySelectorAll(".start");
@@ -202,6 +252,7 @@ function play() {
     var key = document.querySelectorAll(".key");
     var finish = document.querySelectorAll(".finish");
     var message =  document.querySelectorAll(".message");
+    
     //all of the user mouse functions being called here
     start[0].onmouseover = startGame;
     start[0].onmouseleave = continueGame;
