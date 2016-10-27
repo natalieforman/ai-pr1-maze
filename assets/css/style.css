@@ -12,45 +12,102 @@ h1 {
 h3 {
   font-family: "Roboto Slab", serif;
   font-weight: bold;
+  font-size: 16px;
+}
+/* line 16, ../compass/sass/style.scss */
+h3.navigate a {
+  float: left;
+  width: 120px;
+  padding: 7px 0;
+  margin-bottom: 10px;
+  text-align: center;
+  color: #0b2255;
+}
+/* line 23, ../compass/sass/style.scss */
+h3.navigate a.here {
+  color: #333;
+  border-bottom: solid #333 2px;
+}
+/* line 26, ../compass/sass/style.scss */
+h3.navigate a.here:hover {
+  text-decoration: none;
+}
+/* line 30, ../compass/sass/style.scss */
+h3.navigate a:hover {
+  text-decoration: none;
+  background-color: #ccc;
 }
 
-/* line 15, ../compass/sass/style.scss */
+/* line 37, ../compass/sass/style.scss */
+.header {
+  background-color: #eee;
+  margin-bottom: 10px;
+}
+
+/* line 42, ../compass/sass/style.scss */
+.report h3 {
+  font-size: 24px;
+}
+/* line 45, ../compass/sass/style.scss */
+.report h4 {
+  font-weight: bold;
+  font-size: 18px;
+  color: #ab2345;
+  padding-top: 15px;
+}
+/* line 51, ../compass/sass/style.scss */
+.report h5 {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+/* line 56, ../compass/sass/style.scss */
+#nav-b {
+  margin: auto;
+  width: 250px;
+}
+
+/* line 60, ../compass/sass/style.scss */
 #levels {
   overflow: hidden;
 }
-/* line 17, ../compass/sass/style.scss */
+/* line 62, ../compass/sass/style.scss */
 #levels .level {
   float: left;
-  width: 200px;
+  width: 150px;
   font-size: 18px;
   line-height: 45px;
 }
-/* line 23, ../compass/sass/style.scss */
+/* line 68, ../compass/sass/style.scss */
 #levels .e_tile, #levels .m_tile {
   border: none;
 }
-/* line 26, ../compass/sass/style.scss */
+/* line 71, ../compass/sass/style.scss */
 #levels .e_tile.sword {
   width: 45px;
   height: 45px;
   background-image: url(../images/sword_small.jpg);
 }
-/* line 31, ../compass/sass/style.scss */
+/* line 76, ../compass/sass/style.scss */
 #levels .letter {
   background-image: url(../images/message.jpg);
 }
-/* line 34, ../compass/sass/style.scss */
+/* line 79, ../compass/sass/style.scss */
 #levels .unlock {
   background-image: url(../images/key.jpg);
 }
+/* line 82, ../compass/sass/style.scss */
+#levels .col-sm-4 {
+  overflow: hidden;
+}
 
-/* line 38, ../compass/sass/style.scss */
+/* line 86, ../compass/sass/style.scss */
 #game {
   width: 740px;
   margin-bottom: 20px;
 }
 
-/* line 43, ../compass/sass/style.scss */
+/* line 91, ../compass/sass/style.scss */
 .e_tile {
   width: 70px;
   height: 70px;
@@ -58,59 +115,59 @@ h3 {
   border: 2px solid #333;
   background-color: #eee;
 }
-/* line 50, ../compass/sass/style.scss */
+/* line 98, ../compass/sass/style.scss */
 .e_tile.wall {
   background-image: url(../images/e_wall.jpg);
   background-color: #ccc;
 }
-/* line 54, ../compass/sass/style.scss */
+/* line 102, ../compass/sass/style.scss */
 .e_tile.start {
   background-image: url(../images/start.jpg);
   background-color: #550b23;
   color: #fff;
 }
-/* line 59, ../compass/sass/style.scss */
+/* line 107, ../compass/sass/style.scss */
 .e_tile.finish {
   background-image: url(../images/door.jpg);
   background-color: #0b2255;
   color: #fff;
 }
-/* line 64, ../compass/sass/style.scss */
+/* line 112, ../compass/sass/style.scss */
 .e_tile.altar {
   /*Minotaur*/
   background-image: url(../images/minotaur.jpg);
   background-color: #0b2255;
   color: #fff;
 }
-/* line 70, ../compass/sass/style.scss */
+/* line 118, ../compass/sass/style.scss */
 .e_tile.gem {
   /*Sword*/
   background-image: url(../images/sword.jpg);
   background-color: #0b2255;
   color: #fff;
 }
-/* line 76, ../compass/sass/style.scss */
+/* line 124, ../compass/sass/style.scss */
 .e_tile.startMouse {
   background-image: url(../images/go.jpg);
   background-color: #bbd2f7;
 }
-/* line 80, ../compass/sass/style.scss */
+/* line 128, ../compass/sass/style.scss */
 .e_tile.gemClick {
   background-image: url(../images/sword_used.jpg);
   background-color: #ccc;
 }
-/* line 84, ../compass/sass/style.scss */
+/* line 132, ../compass/sass/style.scss */
 .e_tile.altarClick {
   background-image: url(../images/minotaur_dead.jpg);
   background-color: #ccc;
 }
-/* line 88, ../compass/sass/style.scss */
+/* line 136, ../compass/sass/style.scss */
 .e_tile.wallMouse {
   background-color: #ccc;
   background-image: url(../images/e_wall_bad.jpg);
 }
 
-/* line 93, ../compass/sass/style.scss */
+/* line 141, ../compass/sass/style.scss */
 .m_tile {
   width: 45px;
   height: 45px;
@@ -118,84 +175,94 @@ h3 {
   border: 2px solid #333;
   background-color: #eee;
 }
-/* line 100, ../compass/sass/style.scss */
+/* line 148, ../compass/sass/style.scss */
 .m_tile.mountain {
   background-image: url(../images/mountain.jpg);
   background-color: #ccc;
 }
-/* line 104, ../compass/sass/style.scss */
+/* line 152, ../compass/sass/style.scss */
 .m_tile.wall {
   background-image: url(../images/fire.jpg);
   background-color: #ccc;
 }
-/* line 108, ../compass/sass/style.scss */
+/* line 156, ../compass/sass/style.scss */
 .m_tile.wallMouse {
   background-color: #ccc;
   background-image: url(../images/fire_bad.jpg);
 }
-/* line 112, ../compass/sass/style.scss */
+/* line 160, ../compass/sass/style.scss */
 .m_tile.start {
   background-image: url(../images/start_small.jpg);
   background-color: #550b23;
   color: #fff;
 }
-/* line 117, ../compass/sass/style.scss */
+/* line 165, ../compass/sass/style.scss */
 .m_tile.finish {
   background-image: url(../images/exit.jpg);
   background-color: #0b2255;
   color: #fff;
 }
-/* line 122, ../compass/sass/style.scss */
+/* line 170, ../compass/sass/style.scss */
 .m_tile.sky {
   background-image: url(../images/sky.jpg);
   background-color: #8ecbf5;
 }
-/* line 126, ../compass/sass/style.scss */
+/* line 174, ../compass/sass/style.scss */
 .m_tile.message {
   background-image: url(../images/message.jpg);
   background-color: #f58eef;
 }
-/* line 130, ../compass/sass/style.scss */
+/* line 178, ../compass/sass/style.scss */
 .m_tile.sandals {
   background-image: url(../images/sandal.jpg);
   background-color: #333;
 }
-/* line 134, ../compass/sass/style.scss */
+/* line 182, ../compass/sass/style.scss */
 .m_tile.key {
   background-image: url(../images/key.jpg);
   background-color: #aaa;
 }
-/* line 138, ../compass/sass/style.scss */
+/* line 186, ../compass/sass/style.scss */
 .m_tile.startMouse {
   background-image: url(../images/go_small.jpg);
   background-color: #bbd2f7;
 }
-/* line 142, ../compass/sass/style.scss */
+/* line 190, ../compass/sass/style.scss */
 .m_tile.keyClick {
   background-color: #ccc;
 }
-/* line 145, ../compass/sass/style.scss */
+/* line 193, ../compass/sass/style.scss */
 .m_tile.hadesClick {
   background-image: url(../images/hades.jpg);
   background-color: #aaa;
 }
-/* line 149, ../compass/sass/style.scss */
+/* line 197, ../compass/sass/style.scss */
 .m_tile.badMountain {
   background-image: url(../images/mountain_bad.jpg);
   background-color: #ccc;
 }
-/* line 153, ../compass/sass/style.scss */
+/* line 201, ../compass/sass/style.scss */
 .m_tile.sandalsClick, .m_tile.messageClick {
   background-color: #aaa;
 }
 
-/*mouseover tiles*/
-/* line 159, ../compass/sass/style.scss */
-.tileMouse {
-  background-color: #c4edc6;
+/* line 205, ../compass/sass/style.scss */
+#output {
+  height: 50px;
+  width: 300px;
+  background-color: #ccc;
+  margin-bottom: 5px;
 }
 
-/* line 162, ../compass/sass/style.scss */
-.tileLeave {
-  background-color: green;
+/* line 211, ../compass/sass/style.scss */
+input[type=button] {
+  background-color: #ccc;
+  border: none;
+  width: 90px;
+}
+
+/* line 216, ../compass/sass/style.scss */
+input[type=button]:hover {
+  background-color: #333;
+  color: #fff;
 }
