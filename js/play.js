@@ -30,7 +30,6 @@ Called when the user touches the finish successfully
 function win(event) {
   var output = document.getElementById("output");
   output.innerHTML = "You Win";
-  alert("You Win");
 }
 
 /*
@@ -250,14 +249,12 @@ function hadesAppears(event) {
         if (bool === false) { //checking if the user has the key
             hades[0].classList.remove("hades");
             hades[0].classList.add("hadesClick");
-            //alert("Evil Hades has captured you");
             var output = document.getElementById("output");
             output.innerHTML = "Oh No!! You were captured by the Evil Hades";
           }
          else if (bool === true) { //if they do have the key they are safe
             hades[0].classList.remove("hades");
             hades[0].classList.add("hadesClick");
-            //alert("You did not die from the evil hades");
             var output = document.getElementById("output");
             output.innerHTML = "You gave Hades the key and he spared your life";
             if (wall_bool === false) {
