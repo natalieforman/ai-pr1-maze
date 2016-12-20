@@ -1,5 +1,5 @@
 # AI - Project 1 - Maze
-Logical maze visualization for Artificial Intelligence
+Logical maze visualization for Artificial Intelligence. <a href="https://natalieforman.github.io/ai-pr1-maze/">View a live version.</a>
 
 ###Description
 A visualization for three ASP generated mazes.
